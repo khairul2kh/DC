@@ -7,7 +7,7 @@
 <%@ include file="/WEB-INF/template/include.jsp"%> 
 <%@ include file="/WEB-INF/template/headerMinimal.jsp"%>
 <%@ include file="../includes/js_css.jsp"%> 
-
+ 
 <script type="text/javascript">
     $(document).ready(function() {
         $("input").focus(function() {
