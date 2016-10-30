@@ -221,6 +221,7 @@
                     <option value="5153">HBe Ag</option>
                     <option value="2615">Anti-HBe</option>
                     <option value="2614">Anti-HBc Total</option>
+                    <option value="2410">CBC</option>
                 </select>
             </td> 
             <td>

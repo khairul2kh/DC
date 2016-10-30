@@ -127,6 +127,7 @@
             <table style="width:95%">
                 <thead>
                     <tr> 	
+                        <th>&nbsp;&nbsp; <br><br> <b style="text-decoration: overline dotted black; "> Lab Incharge  </b> </th>
                         <th>&nbsp;&nbsp; <br><br> <b style="text-decoration: overline dotted black; "> Medical Technologist  </b> </th>
                         <th style="padding-left:0px; width:30%"><b><u> </u></b></th> 
                     </tr>
@@ -283,7 +284,8 @@
 
     </table>
     <label style="position:fixed; bottom:5px; font-size: 12px; width:100%" >
-        <label style="position:fixed; bottom:70px;">  <b style="text-decoration: overline dotted black; font-weight: normal">   Medical Technologist  </b> </label>
+        <label style="position:fixed; bottom:70px; padding-left:300px;">  <b style="text-decoration: overline dotted black; font-weight: normal">  Medical Technologist </b> </label>
+        <label style="position:fixed; bottom:70px;">  <b style="text-decoration: overline dotted black; font-weight: normal">  Lab Incharge  </b> </label>
         <table style="width:95%"> 
             <thead>
                 <tr> 	

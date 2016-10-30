@@ -45,7 +45,7 @@
             <c:when test="${investigation eq '4569'}">
                 <div class="div1">    <h2>TRANSFUSION MEDICINE DEPARTMENT</h2></div><br>
             </c:when> 
-            <c:when test="${investigation eq '4679' || investigation eq '5692'}">
+            <c:when test="${investigation eq '4679' || investigation eq '5692' || investigation eq '2410' }">
                 <div class="div1">    <h2>HAEMATOLOGY REPORT </h2></div><br>
             </c:when> 
             <c:when test="${investigation eq '2400' || investigation eq '5225'}">
@@ -148,15 +148,17 @@
             <table style="width:95%">
                 <thead>
                     <tr> 	
+                        <th>&nbsp;&nbsp; <br><br> <b style="text-decoration: overline dotted black; "> Lab Incharge  </b> </th>
                         <th>&nbsp;&nbsp; <br><br> <b style="text-decoration: overline dotted black; "> Medical Technologist  </b> </th>
                         <th style="padding-left:0px; width:30%"><b><u> </u></b></th> 
                     </tr>
                 </thead>  
                 <tr>	
                     <td>  </td>
+                    <td>  </td>
                     <td>
                         <c:if test="${not empty docInfo}">
-                            &nbsp;&nbsp;<br>
+                            &nbsp;&nbsp;
                             <b>${docInfo.docName}</b><br>
                             ${docInfo.degree}<br>
                             ${docInfo.designation}<br>
@@ -224,7 +226,7 @@
                 <c:when test="${investigation eq '4569'}">
                     <div class="div1">    <h2>TRANSFUSION MEDICINE DEPARTMENT</h2></div><br>
                 </c:when> 
-                <c:when test="${investigation eq '4679' || investigation eq '5692'}">
+                <c:when test="${investigation eq '4679' || investigation eq '5692' || investigation eq '2410'}">
                     <div class="div1">   <h2>HAEMATOLOGY REPORT</h2></div><br>
                 </c:when> 
                 <c:when test="${investigation eq '2400' || investigation eq '5225'}">
@@ -439,7 +441,8 @@
 
     </table>
     <label style="position:fixed; bottom:5px; font-size: 12px; width:100%" >
-        <label style="position:fixed; bottom:70px;">  <b style="text-decoration: overline dotted black; font-weight: normal">   Medical Technologist  </b> </label>
+        <label style="position:fixed; bottom:70px; padding-left:300px;">  <b style="text-decoration: overline dotted black; font-weight: normal">  Medical Technologist </b> </label>
+        <label style="position:fixed; bottom:70px;">  <b style="text-decoration: overline dotted black; font-weight: normal">  Lab Incharge  </b> </label>
         <table style="width:95%"> 
             <thead>
                 <tr> 	

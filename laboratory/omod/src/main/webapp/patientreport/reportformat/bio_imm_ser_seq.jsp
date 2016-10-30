@@ -886,21 +886,16 @@
         </tr> 
     </c:if>
 </c:forEach>
-        
-<!-- CBC -->
 
+<!-- CBC -->
 <c:forEach items="${te}" var="te">
-    <c:if test="${investigation eq '4679' && te.concept.conceptId eq '2410' }">
-        <tr>
-            <td colspan="4">   
-                &nbsp;&nbsp;<b>CBC (Hb Percentage ESR TC DC With PC)</b> 				
-            </td>
-        </tr>	
+    <c:if test="${investigation eq '2410' && te.concept.conceptId eq '2410' }">
+
         <tr>
             <td style="width:40%;">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '995' && t.groupName eq '2410'}">
-                        &emsp;&emsp;&nbsp;${t.testName}  
+                        &nbsp;&nbsp;${t.testName}  
                     </c:if>	 
                 </c:forEach>
             </td>
@@ -930,7 +925,7 @@
             <td> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '2220' && t.groupName eq '2410'}">
-                        &emsp;&emsp;&nbsp;${t.testName}  
+                        &nbsp;&nbsp;${t.testName}   
                     </c:if>	 
                 </c:forEach>
             </td>
@@ -957,191 +952,381 @@
             </td>
         </tr>
         <tr>
-            <td> 
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2242' && t.groupName eq '2410' }">
-                        &emsp;&emsp;&nbsp;${t.testName}    
-                    </c:if>	 
-                </c:forEach>
-            </td> 
-            <td style="padding-left:0px; width:15%;"> 
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2242' && t.groupName eq '2410'}">
-                        ${t.test}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2242' && t.groupName eq '2410'}">
-                        ${t.unit} 
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2242' && t.groupName eq '2410'}">
-                        <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if> 
-                    </c:if>
-                </c:forEach> 
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4"> &emsp;&emsp;&nbsp;<b>DIFFERENTIAL LEUCOCYTE COUNT</b>
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;"> 
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2237'}">
-                        &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}    
-                    </c:if>	 
-                </c:forEach>
-            </td> 
-            <td style="padding-left:0px; width:15%;">   
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2237'}">
-                        ${t.test}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2237'}">
-                        ${t.unit}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2237'}">
-                        <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
-                    </c:if>
-                </c:forEach> 
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;">
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2238'}">
-                        &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}  
-                    </c:if>	 
-                </c:forEach>
-            </td> 
-            <td style="padding-left:0px; width:15%;">  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2238'}">
-                        ${t.test}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2238'}">
-                        ${t.unit}   
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2238'}">
-                        <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
-                    </c:if>
-                </c:forEach> 
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;"> 
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2239'}">
-                        &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}   
-                    </c:if>	 
-                </c:forEach>
-            </td> 
-            <td style="padding-left:0px; width:15%;">  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2239'}">
-                        ${t.test}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2239'}">
-                        ${t.unit}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2239'}">
-                        <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
-                    </c:if>
-                </c:forEach> 
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;">
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2240'}">
-                        &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}  
-                    </c:if>	 
-                </c:forEach>
-            </td> 
-            <td style="padding-left:0px; width:15%;">  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2240'}">
-                        ${t.test}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2240'}">
-                        ${t.unit}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2240'}">
-                        <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
-                    </c:if>
-                </c:forEach> 
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align: top;"> 
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2241'}">
-                        &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}   
-                    </c:if>	 
-                </c:forEach>
-            </td> 
-            <td style="padding-left:0px; width:15%;">   
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2241'}">
-                        ${t.test}  
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2241'}">
-                        ${t.unit}   
-                    </c:if>
-                </c:forEach> 
-            </td>
-            <td>  
-                <c:forEach items="${tmn}" var="t">
-                    <c:if test="${t.investigation eq '2241'}">
-                        <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
-                    </c:if>
-                </c:forEach> 
-            </td>
-        </tr>
+            <td colspan="4"> &nbsp;&nbsp;<u style="font-weight:bold;">Total Count</u>
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2211'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}    
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">   
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2211'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2211'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2211'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4570'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}    
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">   
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4570'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4570'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4570'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4242'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}    
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">   
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4242'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4242'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '4242'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
 
-    </c:if>
+<tr>
+    <td colspan="4"> &nbsp;&nbsp;<u style="font-weight:bold;">Differential Count</u>
+</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2237'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}    
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">   
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2237'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2237'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2237'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;">
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2238'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}  
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2238'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2238'}">
+                ${t.unit}   
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2238'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2239'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}   
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2239'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2239'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2239'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;">
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2240'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}  
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2240'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2240'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2240'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2241'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}   
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">   
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2241'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2241'}">
+                ${t.unit}   
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '2241'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+
+<tr>
+    <td colspan="4"> &nbsp;&nbsp;<u style="font-weight:bold;">d Cell Indices</u>
+</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6773'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}    
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">   
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6773'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6773'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6773'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;">
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6774'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}  
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6774'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6774'}">
+                ${t.unit}   
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6774'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6775'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}   
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6775'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6775'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6775'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;">
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6776'}">
+                &emsp;&emsp;&emsp;&emsp;&nbsp;${t.testName}  
+            </c:if>	 
+        </c:forEach>
+    </td> 
+    <td style="padding-left:0px; width:15%;">  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6776'}">
+                ${t.test}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6776'}">
+                ${t.unit}  
+            </c:if>
+        </c:forEach> 
+    </td>
+    <td>  
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6776'}">
+                <c:if test="${not empty t.refRange}"> ${t.refRange} </c:if>
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+
+</c:if>
 </c:forEach>
 
 <style> 
