@@ -155,7 +155,6 @@
             </c:choose>
         </c:forEach>
 
-        <br>
         <table  style="border-collapse: collapse;  border-radius: 10px; box-shadow: 0 0 0 1px #666;" width="99%">
             <tr>
                 <td height="25" style="text-align:left; font-size:13px; padding-left:10px; width:18%; font-style: italic; " >ID No <span style="float:right; font-style:normal;">:</span>  </td>
