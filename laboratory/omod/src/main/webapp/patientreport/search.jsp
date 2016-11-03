@@ -71,6 +71,16 @@
             <c:choose>
                 <c:when test="${investigation eq '2415' || investigation eq '3117' || investigation eq '5718' }">     
                 </c:when>
+                <c:when test="${investigation eq '2410'}">
+                    <thead>
+                        <tr>		
+                            <th>&nbsp;&nbsp;Test </th>
+                            <th style="padding-left:5px; text-align:center;" colspan="2"> Result </th>
+
+                            <th style="padding-left:5px; width:30%"> Reference Range </th> 
+                        </tr>
+                    </thead> 
+                </c:when>
                 <c:otherwise>
                     <thead>
                         <tr>		
@@ -253,6 +263,16 @@
                         <td colspan="4"><%@ include file="../patientreport/reportformat/patientInfo.jsp"%> <br></td>
                     </tr>
                 </c:when>
+                <c:when test="${investigation eq '2410'}">
+                    <thead>
+                        <tr style="height:30px;">		
+                            <th>&nbsp;&nbsp;Test </th>
+                            <th style="padding-left:5px; text-align:center;" colspan="2"> Result </th>
+
+                            <th style="padding-left:5px; text-align:center; width:30%"> Reference Range </th> 
+                        </tr>
+                    </thead> 
+                </c:when>
                 <c:otherwise>
                     <thead>
                         <tr>
@@ -267,85 +287,7 @@
                                 </td>
                             </tr>
                         </c:if>
-                        <c:if test="${investigation eq '5158'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by Genius-PA54 Random Access Automated Specific Protein Analyzer </i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '2734'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <i> DEPARTMENT OF MICROBIOLOGY</i></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '3945'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by Maglumi-800 Random Access Multibatch chemiluminescence immunoassay (CLIA) Analyzer</i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '2543'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by Vitros-250 Random Access Automated Chemistry Analyzer</i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '3937'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by Vitros-250 Random Access Automated Chemistry Analyzer</i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '3092'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by Maglumi-800 Random Access Automated Immunoassay Analyzer </i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '5216'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by Micro plate Reader (ELISA)</i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '2577'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by ALS-SC2(ALARis TURKEY) Semi-Automated Coagulation Analyzer</i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '2563'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <i> DEPARTMENT OF HISTOPATHOLOGY</i></span>
-                                </td>
-                            </tr>
-                        </c:if>
-                        <c:if test="${investigation eq '4569'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;"><i> TRANSFUSION MEDICINE DEPARTMENT</i></span>
-                                </td>
-                            </tr>
-                        </c:if>
+
                         <c:if test="${investigation eq '4679'}">
                             <tr>
                                 <td colspan="4">
@@ -371,7 +313,7 @@
 
                 <c:forEach var="test" items="${investigation}">
                     <c:choose>
-                        <c:when test="${investigation eq '2415' || investigation eq '3117'}">     
+                        <c:when test="${investigation eq '2415' || investigation eq '3117' || investigation eq '2410'}">     
                         </c:when>
                         <c:otherwise>
                         <br>
