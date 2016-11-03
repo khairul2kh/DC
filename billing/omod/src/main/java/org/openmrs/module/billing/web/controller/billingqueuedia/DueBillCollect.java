@@ -218,7 +218,7 @@ public class DueBillCollect {
                     diaComCal.setRefRmpId(rmpId);
                     ms.saveDiaComCal(diaComCal);
                 }
-            }
+            } 
         }
         if (sername != null) {
             DiaCommissionCalAll diaAll = ms.getDiaAllByBillId(billId);
