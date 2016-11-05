@@ -57,7 +57,7 @@
         <td>${com.patient.givenName} ${com.patient.middleName} ${com.patient.familyName}</td>
         <td>${com.patient.age} </td>
         <td>${com.patient.gender} </td>
-        <td> </td>
+        <td>${com.concept.name} </td>
     </tr>
 </c:forEach>
 </table>

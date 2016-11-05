@@ -1,7 +1,7 @@
 <%-- 
-    Document   : patientInfo
-    Created on : Nov 21, 2015, 11:13:48 AM
-    Author     : Khairul
+   Document   : patientInfo
+   Created on : Nov 21, 2015, 11:13:48 AM
+   Author     : Khairul
 --%>
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <hr/> 
@@ -264,7 +264,11 @@
                     </tr>
                 </c:when>
                 <c:when test="${investigation eq '2410'}">
+
                     <thead>
+                        <tr>
+                            <td colspan="4"><%@ include file="../patientreport/reportformat/patientInfo.jsp"%> <br></td>
+                        </tr>
                         <tr style="height:30px;">		
                             <th>&nbsp;&nbsp;Test </th>
                             <th style="padding-left:5px; text-align:center;" colspan="2"> Result </th>
