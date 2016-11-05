@@ -26,19 +26,21 @@
 <%@ include file="../localHeader.jsp" %>
 
 <script type="text/javascript">
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
         jQuery('#date').datepicker({yearRange: 'c-30:c+30', dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true});
         jQuery("#searchbox").showPatientSearchBox({
             searchBoxView: "${hospitalName}/default",
             resultView: "/module/laboratory/patientsearch/${hospitalName}/patientreport",
             target: "#patientResult",
-            beforeNewSearch: function() {
+            beforeNewSearch: function () {
                 jQuery("#patientSearchResultSection").hide();
             },
-            success: function(data) {
+            success: function (data) {
                 jQuery("#patientSearchResultSection").show();
             }
         });
+        jQuery("#patientQueueCompleteTest").hide();
+
     });
 
     // Get patient test by patient identifier
@@ -63,16 +65,17 @@
                 investigation: investigation,
                 doc: doc
             }),
-            success: function(data) {
+            success: function (data) {
                 jQuery("#tests").html(data);
                 insertTestInfo(patientId);
                 insertTestInfo(investigation);
                 jQuery("#patientSearchResultSection").hide();
+                jQuery("#patientQueueCompleteTest").hide();
                 jQuery('#showPatientResult').show();
                 $('#abc').hide();
                 jQuery("#box").unmask();
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 //alert(thrownError);
             }
         });
@@ -91,11 +94,11 @@
                 orderDate: date,
                 //investigation   :investigation
             }),
-            success: function(data) {
+            success: function (data) {
                 jQuery("#patientReportTestInfo").html(data);
                 jQuery("#printAreaTestInfo").html(data);
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 //alert(thrownError);//
             }
         });
@@ -109,12 +112,30 @@
     }
 
     function printPatientReport() {
-        jQuery("#patientReportPrintArea table").each(function(index, item) {
+        jQuery("#patientReportPrintArea table").each(function (index, item) {
             //jQuery(item).attr("class", "wltable");
         });
         jQuery("#patientReportPrintArea").printArea({
             mode: "popup",
             popClose: true
+        });
+    }
+
+    function getCompletedTestAll() {
+        jQuery("#patientQueueCompleteTest").show();
+        var date = jQuery("#date").val();
+        jQuery.ajax({
+            type: "GET",
+            url: getContextPath() + "/module/laboratory/completeTestAll.htm",
+            data: ({
+                date: date
+            }),
+            success: function (data) {
+                jQuery("#completeTestAllQueue").html(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                // alert(date);//
+            }
         });
     }
 </script>
@@ -139,7 +160,7 @@
         appearance:none;
         cursor:pointer;
         width:65%;
-		font-size:10px;
+        font-size:10px;
     }
     .opdSelect option {
         -webkit-border-radius:4px;
@@ -151,9 +172,9 @@
         padding: 5px 5px;
         height:auto;
         width:100%;
-		 
+
     }
-     
+
     .opdSelect1 {
         padding:2px;
         margin: 0;
@@ -227,7 +248,7 @@
             <td>
                 <div id="searchbox"></div>	
             </td>
-			
+
             <td>
                 <a href="#" id='showPatientResult' style='display:none;' onclick="jQuery('#patientSearchResultSection').show();
                         jQuery('#showPatientResult').hide();">Show patients</a>
@@ -242,10 +263,13 @@
                 </select>
 
             </td>
-			 
+
             <td width="10%" align="right">
-              <input type="button" value="Print" class="bu-normal" onClick="printPatientReport();"/>
+                <input type="button" value="Print" class="bu-normal" onClick="printPatientReport();"/>
             </td>
+        </tr>
+        <tr>
+            <td colspan="6"> <input type="button" class="bu-normal" value="Get Patient" onClick="getCompletedTestAll();"/> </td> 
         </tr>
     </table>
 </div>
@@ -253,6 +277,11 @@
 <div id="patientSearchResultSection" style="display:none;">
     <div class="boxHeader">Found Patients</div>
     <div class="box" id="patientResult"></div>
+</div>
+<!-- This is for Complete test Queue -->
+<div id="patientQueueCompleteTest" >
+    <div class="boxHeader">Found Patients</div>
+    <div class="box" id="completeTestAllQueue" ></div>
 </div>
 <div style="position:relative; left:40%;  display:none;" id="abc" >
     <img src="${pageContext.request.contextPath}/moduleResources/laboratory/spinner.gif" id="img" 

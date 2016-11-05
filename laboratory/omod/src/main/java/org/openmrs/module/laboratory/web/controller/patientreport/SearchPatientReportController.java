@@ -62,7 +62,7 @@ public class SearchPatientReportController {
         try {
             date = sdf.parse(dateStr);
             Patient patient = Context.getPatientService().getPatient(patientId);
-
+   
             List<TestModelNew> tmn = new ArrayList<TestModelNew>();
             //String ob=null;
             List<LabTest> te = Context.getService(LaboratoryService.class).getLaboratoryTestsByDateAndPatient(date, patient);
