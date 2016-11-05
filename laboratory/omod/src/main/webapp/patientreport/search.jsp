@@ -21,9 +21,6 @@
             <c:when test="${investigation eq '2311' || investigation eq '2577' || investigation eq '5158' || investigation eq '3937' || investigation eq '4252'}">
                 <div class="div1">   <h2>BIOCHEMISTRY REPORT</h2></div><br>
             </c:when>
-            <c:when test="${investigation eq '2543'}">
-                <div class="div1">   <h2>ELECTROLYTES REPORT</h2></div><br>
-            </c:when>
             <c:when test="${investigation eq '2415' || investigation eq '5148'}">
                 <div class="div1">   <h2>URINE EXAMINATION REPORT</h2></div><br>
             </c:when>
@@ -45,13 +42,12 @@
             <c:when test="${investigation eq '4569'}">
                 <div class="div1">    <h2>TRANSFUSION MEDICINE DEPARTMENT</h2></div><br>
             </c:when> 
-            <c:when test="${investigation eq '4679' || investigation eq '5692' || investigation eq '2410' }">
+            <c:when test="${investigation eq '4679' || investigation eq '5692' }">
                 <div class="div1">    <h2>HAEMATOLOGY REPORT </h2></div><br>
             </c:when> 
             <c:when test="${investigation eq '2400' || investigation eq '5225'}">
                 <div class="div1"> <h2>SEROLOGY REPORT </h2></div><br>
             </c:when> 
-
             <c:when test="${investigation eq '3693'}">
                 <div class="div1"> <h2> Virology Report </h2></div><br>
             </c:when>
@@ -71,16 +67,7 @@
             <c:choose>
                 <c:when test="${investigation eq '2415' || investigation eq '3117' || investigation eq '5718' }">     
                 </c:when>
-                <c:when test="${investigation eq '2410'}">
-                    <thead>
-                        <tr>		
-                            <th>&nbsp;&nbsp;Test </th>
-                            <th style="padding-left:5px; text-align:center;" colspan="2"> Result </th>
-
-                            <th style="padding-left:5px; width:30%"> Reference Range </th> 
-                        </tr>
-                    </thead> 
-                </c:when>
+                 
                 <c:otherwise>
                     <thead>
                         <tr>		
@@ -153,7 +140,6 @@
         </c:forEach>
         </tbody>
         <%@ include file="../patientreport/reportformat/all_test.jsp"%>
-
         <div>
             <table style="width:95%">
                 <thead>
@@ -212,9 +198,6 @@
                 <c:when test="${investigation eq '2311' || investigation eq '2577' || investigation eq '5158' || investigation eq '3937' || investigation eq '4252'}">
                     <div class="div1">   <h2>BIOCHEMISTRY REPORT</h2></div><br>
                 </c:when>
-                <c:when test="${investigation eq '2543'}">
-                    <div class="div1">   <h2>ELECTROLYTES REPORT</h2></div><br>
-                </c:when>
                 <c:when test="${investigation eq '2415' || investigation eq '5148'}">
                     <div class="div1">   <h2>URINE EXAMINATION REPORT</h2></div><br>
                 </c:when>
@@ -236,13 +219,12 @@
                 <c:when test="${investigation eq '4569'}">
                     <div class="div1">    <h2>TRANSFUSION MEDICINE DEPARTMENT</h2></div><br>
                 </c:when> 
-                <c:when test="${investigation eq '4679' || investigation eq '5692' || investigation eq '2410'}">
+                <c:when test="${investigation eq '4679' || investigation eq '5692'}">
                     <div class="div1">   <h2>HAEMATOLOGY REPORT</h2></div><br>
                 </c:when> 
                 <c:when test="${investigation eq '2400' || investigation eq '5225'}">
                     <div class="div1"> <h2>SEROLOGY REPORT </h2> </div><br>
                 </c:when> 
-
                 <c:when test="${investigation eq '3693'}">
                     <div class="div1"> <h2> Virology Report </h2></div><br>
                 </c:when>
@@ -252,9 +234,6 @@
             </c:choose>
         </c:forEach>
     </center>
-    <!-- <div id="printAreaTestInfo"></div><br/><br/> -->
-
-
     <table class="wltable" cellspacing="0" style="width:100%; border: 0px solid; margin-left: auto; margin-right: auto;">
         <c:forEach var="test" items="${investigation}">
             <c:choose>
@@ -263,35 +242,11 @@
                         <td colspan="4"><%@ include file="../patientreport/reportformat/patientInfo.jsp"%> <br></td>
                     </tr>
                 </c:when>
-                <c:when test="${investigation eq '2410'}">
-
-                    <thead>
-                        <tr>
-                            <td colspan="4"><%@ include file="../patientreport/reportformat/patientInfo.jsp"%> <br></td>
-                        </tr>
-                        <tr style="height:30px;">		
-                            <th>&nbsp;&nbsp;Test </th>
-                            <th style="padding-left:5px; text-align:center;" colspan="2"> Result </th>
-
-                            <th style="padding-left:5px; text-align:center; width:30%"> Reference Range </th> 
-                        </tr>
-                    </thead> 
-                </c:when>
                 <c:otherwise>
                     <thead>
                         <tr>
                             <td colspan="4"><%@ include file="../patientreport/reportformat/patientInfo.jsp"%> <br></td>
                         </tr>
-
-                        <c:if test="${investigation eq '2311' || investigation eq '4252'}">
-                            <tr>
-                                <td colspan="4">
-                                    <span style="margin-top:100px; font-size:16px; font-weight: bold; text-align:center;">
-                                        <!-- <i> Estimations are carried out by Vitros-250 Random Access Automated Chemistry Analyzer  </i> --></span>
-                                </td>
-                            </tr>
-                        </c:if>
-
                         <c:if test="${investigation eq '4679'}">
                             <tr>
                                 <td colspan="4">
@@ -300,7 +255,6 @@
                                 </td>
                             </tr>
                         </c:if>
-
                         <tr>
                             <th class="right" style="padding:5px 5px 5px 5px; border-right:1px solid #fff; width:40%; ">   &nbsp;   Test </th>
                             <th class="right" style="border-left:1px solid #fff; border-right:1px solid #fff; padding-left:5px; width:13%;"> Result </th>
@@ -311,13 +265,11 @@
                 </c:otherwise>                
             </c:choose>
         </c:forEach>
-
         <tbody>
             <c:forEach var="test" items="${investigation}">
-
                 <c:forEach var="test" items="${investigation}">
                     <c:choose>
-                        <c:when test="${investigation eq '2415' || investigation eq '3117' || investigation eq '2410'}">     
+                        <c:when test="${investigation eq '2415' || investigation eq '3117'}">     
                         </c:when>
                         <c:otherwise>
                         <br>
@@ -325,9 +277,7 @@
                     </c:otherwise>                
                 </c:choose>
             </c:forEach>
-
             <%@ include file="../patientreport/reportformat/bio_imm_ser_seq.jsp"%>
-
             <c:forEach var="test" items="${tests}">
                 <c:if test="${(test.investigation eq 'DEPARTMENT OF BIOCHEMISTRY' && investigation eq '2311') ||
                               (test.investigation eq 'DEPARTMENT OF CLINICAL PATHOLOGY' && investigation eq '5142') ||
@@ -410,7 +360,6 @@
         </table>
     </label>
 </div>
-
 <style>
     .absolute {
         position: absolute;

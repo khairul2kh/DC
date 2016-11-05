@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
-
+     
     });
 </script>
 
@@ -52,13 +52,12 @@
     <th>Test Name</th>
 </thead>
 <c:forEach items="${listComTest}" var="com" varStatus="varStatus" >
-    <tr onClick="getPatientReport('${com.patient.patientId}');">	
+    <tr class="patientRow" onClick="getPatientReportFromQueue('${com.patient.patientId}', '${com.concept}');">	
         <td>${com.patient.patientIdentifier} </td>
         <td>${com.patient.givenName} ${com.patient.middleName} ${com.patient.familyName}</td>
         <td>${com.patient.age} </td>
         <td>${com.patient.gender} </td>
-        <td>${com.concept.name} </td>
+        <td>${com.concept.name}</td>
     </tr>
 </c:forEach>
 </table>
-

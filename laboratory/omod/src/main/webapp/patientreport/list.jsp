@@ -48,12 +48,9 @@
         var date = jQuery("#date").val();
         var investigation = jQuery("#investigation").val();
         var doc = jQuery("#doc").val();
-        //validation = validate(investigation);
-        //if(validation.status){
 
         jQuery("#tests").mask();
         jQuery("#box").mask();
-
 
         $('#abc').show();
         jQuery.ajax({
@@ -80,7 +77,45 @@
             }
         });
         //alert(investigation);
-    }//}
+    }
+
+    // Get patient test by patient identifier
+    function getPatientReportFromQueue(patientId, conceptId) {
+        var date = jQuery("#date").val();
+        var investigation = jQuery("#investigation").val();
+        var doc = jQuery("#doc").val();
+
+        jQuery("#tests").mask();
+        jQuery("#box").mask();
+        jQuery("#patientQueueCompleteTest").mask();
+
+        $('#abc').show();
+        jQuery.ajax({
+            type: "GET",
+            url: getContextPath() + "/module/laboratory/searchPatientReport.form",
+            data: ({
+                date: date,
+                patientId: patientId,
+                investigation: conceptId,
+                doc: doc
+            }),
+            success: function (data) {
+                jQuery("#tests").html(data);
+                insertTestInfo(patientId);
+                insertTestInfo(investigation);
+                jQuery("#patientSearchResultSection").hide();
+                jQuery("#patientQueueCompleteTest").hide();
+                jQuery('#showPatientResult').show();
+                $('#abc').hide();
+                jQuery("#box").unmask();
+                jQuery("#patientQueueCompleteTest").unmask();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                //alert(thrownError);
+            }
+        });
+        //alert(investigation);
+    }
 
     // Insert test information
     function insertTestInfo(patientId) {
@@ -274,6 +309,10 @@
     </table>
 </div>
 <br/>
+<div style="position:relative; left:40%;  display:none;" id="abc" >
+    <img src="${pageContext.request.contextPath}/moduleResources/laboratory/spinner.gif" id="img" 
+         style=" border:1px solid #eee;  height:100px; width:100px; " /> 
+</div>
 <div id="patientSearchResultSection" style="display:none;">
     <div class="boxHeader">Found Patients</div>
     <div class="box" id="patientResult"></div>
@@ -283,9 +322,6 @@
     <div class="boxHeader">Found Patients</div>
     <div class="box" id="completeTestAllQueue" ></div>
 </div>
-<div style="position:relative; left:40%;  display:none;" id="abc" >
-    <img src="${pageContext.request.contextPath}/moduleResources/laboratory/spinner.gif" id="img" 
-         style=" border:1px solid #eee;  height:100px; width:100px; " /> </div>
 <div id="tests">
 </div>
 <%@ include file="/WEB-INF/template/footer.jsp" %>  
