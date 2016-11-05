@@ -283,8 +283,7 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
     public List<Order> getOrders(Patient patient, Date date, Concept concept)
             throws ParseException {
 
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
-                Order.class);
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String startDate = sdf.format(date) + " 00:00:00";
         String endDate = sdf.format(date) + " 23:59:59";
@@ -333,7 +332,7 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
         String startDate = sdf.format(date) + " 00:00:00";
         String endDate = sdf.format(date) + " 23:59:59";
         String s = "completed";
-        String hql = "from LabTest l where d.acceptDate BETWEEN '"
+        String hql = "from LabTest l where l.acceptDate BETWEEN '"
                 + startDate
                 + "' AND '"
                 + endDate
