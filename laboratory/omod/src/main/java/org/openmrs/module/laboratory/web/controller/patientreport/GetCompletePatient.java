@@ -7,6 +7,7 @@ package org.openmrs.module.laboratory.web.controller.patientreport;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.openmrs.api.context.Context;
