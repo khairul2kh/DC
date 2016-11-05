@@ -320,8 +320,6 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
                     <c:set var="vartube" value="${vartube + tubeprice}"/>
                 </c:if>
 
-
-
             </c:forEach>
             <tr>
                 <td colspan="3" align="right" 	style="border-right: solid 4px #ccc;"><span style="font-size:20px; font-weight:bold; ">Total Bill</span> </td>

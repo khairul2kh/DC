@@ -61,7 +61,6 @@ var C =
 
 ////////////////////////
 
-
 var DOC =
         {
             ready: function()

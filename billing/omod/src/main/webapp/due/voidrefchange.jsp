@@ -165,7 +165,7 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
             <td width="20%">Patient Name :   <span style="font-weight:bold; font-size:16px; color:blue;">
                     ${dpsb.patient.givenName} ${dpsb.patient.middleName} ${dpsb.patient.familyName}</span> </td>
             <td width="20%">Patient ID : <span style="font-weight:bold; font-size:16px; color:blue;">
-                    ${identifier} </span> </td>
+                    ${dpsb.patient.patientIdentifier} </span> </td>
             <td width="20%">Bill Id :<span style="font-weight:bold; font-size:20px; color:blue;">  ${dpsb.billId}  </span> </td>
         </tr>
         <tr><td> &nbsp; </td> </tr>
