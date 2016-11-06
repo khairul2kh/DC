@@ -111,4 +111,7 @@ public interface LaboratoryService extends OpenmrsService {
         public LabDoctorSeal getLabDocSealById(Integer id)throws APIException;
         
         public LabDoctorSeal updateLabDocSeal(LabDoctorSeal labDocSela)throws APIException;
+        
+        public List<LabTest> getLaboratoryTestsByDateAndAcceptedGroup(Date date) throws ParseException;
+        
 }

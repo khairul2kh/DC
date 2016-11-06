@@ -124,4 +124,6 @@ public interface LaboratoryDAO {
         
         public LabDoctorSeal updateLabDocSeal(LabDoctorSeal labDocSela)throws DAOException;
         
+        public List<LabTest> getLaboratoryTestsByDateAndAcceptedGroup(Date date) throws DAOException;
+        
 }

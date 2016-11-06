@@ -355,4 +355,8 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
     public LabDoctorSeal updateLabDocSeal(LabDoctorSeal labDocSela) throws APIException {
         return dao.updateLabDocSeal(labDocSela);
     }
+
+    public List<LabTest> getLaboratoryTestsByDateAndAcceptedGroup(Date date) throws ParseException {
+        return dao.getLaboratoryTestsByDateAndAcceptedGroup(date);
+    }
 } 

@@ -337,6 +337,8 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
                 + "' AND '"
                 + endDate
                 + "' AND l.status = '" + s + "'";
+
+        // + "' GROUP BY l.patient.patientId";
         Session ses = sessionFactory.getCurrentSession();
         Query q = ses.createQuery(hql);
         List<LabTest> list = q.list();
@@ -349,7 +351,7 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
     }
 
     public List<LabDoctorSeal> getAllListLabDocSeal() throws DAOException {
-        
+
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabDoctorSeal.class);
         List<LabDoctorSeal> list = criteria.list();
         return list;
@@ -365,11 +367,30 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
         return (LabDoctorSeal) sessionFactory.getCurrentSession().merge(labDocSela);
     }
 
+    public List<LabTest> getLaboratoryTestsByDateAndAcceptedGroup(Date date) throws DAOException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String startDate = sdf.format(date) + " 00:00:00";
+        String endDate = sdf.format(date) + " 23:59:59";
+        String s = "completed";
+        String hql = "from LabTest l where l.acceptDate BETWEEN '"
+                + startDate
+                + "' AND '"
+                + endDate
+                + "' AND l.status = '" + s 
+                + "' GROUP BY l.patient.patientId";
+
+        // + "' GROUP BY l.patient.patientId";
+        Session ses = sessionFactory.getCurrentSession();
+        Query q = ses.createQuery(hql);
+        List<LabTest> list = q.list();
+        return list;
+    }
+
 }
 
 /*
 
-return (DiaPatientServiceBill) sessionFactory.getCurrentSession().merge(diaPatientServiceBill);
+ return (DiaPatientServiceBill) sessionFactory.getCurrentSession().merge(diaPatientServiceBill);
 
 
  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
