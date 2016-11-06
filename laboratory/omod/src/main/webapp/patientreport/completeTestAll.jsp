@@ -30,16 +30,22 @@
         vertical-align: top;
     }
 
-    table.kha tr:hover td{
+    table.a tr:hover td{
         background-color:#58FAAC;
         cursor:pointer;
     }
-
+    .span{
+        cursor:pointer;
+        color:black;
+    }
+    .span:hover {
+        color:red;
+    }
 </style>
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
-     
+
     });
 </script>
 
@@ -52,12 +58,17 @@
     <th>Test Name</th>
 </thead>
 <c:forEach items="${listComTest}" var="com" varStatus="varStatus" >
-    <tr class="patientRow" onClick="getPatientReportFromQueue('${com.patient.patientId}', '${com.concept}');">	
+    <tr class="patientRow"  >	
         <td>${com.patient.patientIdentifier} </td>
         <td>${com.patient.givenName} ${com.patient.middleName} ${com.patient.familyName}</td>
         <td>${com.patient.age} </td>
         <td>${com.patient.gender} </td>
-        <td>${com.concept.name}</td>
+        <td>  <c:forEach items="${listComTestAll}" var="c" varStatus="varStatus" >
+                <c:if test="${c.patient.patientId eq com.patient.patientId}">
+                    <span class="span" onClick="getPatientReportFromQueue('${c.patient.patientId}', '${c.concept}');"> ${c.concept.name} </span> &emsp;&emsp;
+                </c:if>
+            </c:forEach>
+        </td>
     </tr>
 </c:forEach>
 </table>

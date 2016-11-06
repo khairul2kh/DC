@@ -40,15 +40,20 @@ public class GetCompletePatient {
             e.printStackTrace();
         }
 
-        List<LabTest> listComTest = ls.getLaboratoryTestsByDateAndAccepted(date1);
+        List<LabTest> listComTest = ls.getLaboratoryTestsByDateAndAcceptedGroup(date1);
         model.addAttribute("listComTest", listComTest);
-  
-        List < String > conName = new ArrayList<String>();
-        for (int i = 0; i < listComTest.size(); i++) { //using loop 
-            String conceptName = listComTest.get(i).getConcept().getName().getName();
-            conName.add(conceptName);
-        }
-        model.addAttribute("conName", conName);
+
+        List<LabTest> listComTestAll = ls.getLaboratoryTestsByDateAndAccepted(date1);
+        model.addAttribute("listComTestAll", listComTestAll);
+
+//        List< String> conName = new ArrayList<String>();
+//        String conceptName = null;
+//        for (int i = 0; i < listComTestAll.size(); i++) { //using loop 
+//            conceptName = conceptName+","+listComTestAll.get(i).getConcept().getName().getName();
+//            conName.add(conceptName);
+//        }       
+//        model.addAttribute("conName", conName);
+//        model.addAttribute("conceptName", conceptName);
         return "/module/laboratory/patientreport/completeTestAll";
     }
 }
