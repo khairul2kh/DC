@@ -48,27 +48,33 @@
 
     });
 </script>
-
-<table class="kha">
-    <thead>
-    <th>Patient Id </th>
-    <th>Name </th>
-    <th>Age</th>
-    <th>Gender</th>
-    <th>Test Name</th>
-</thead>
-<c:forEach items="${listComTest}" var="com" varStatus="varStatus" >
-    <tr class="patientRow"  >	
-        <td>${com.patient.patientIdentifier} </td>
-        <td>${com.patient.givenName} ${com.patient.middleName} ${com.patient.familyName}</td>
-        <td>${com.patient.age} </td>
-        <td>${com.patient.gender} </td>
-        <td>  <c:forEach items="${listComTestAll}" var="c" varStatus="varStatus" >
-                <c:if test="${c.patient.patientId eq com.patient.patientId}">
-                    <span class="span" onClick="getPatientReportFromQueue('${c.patient.patientId}', '${c.concept}');"> ${c.concept.name} </span> &emsp;&emsp;
-                </c:if>
-            </c:forEach>
-        </td>
-    </tr>
-</c:forEach>
+<c:choose>
+    <c:when test="${not empty listComTest}">
+        <table class="kha">
+            <thead>
+            <th>Patient Id </th>
+            <th>Name </th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Test Name</th>
+        </thead>
+        <c:forEach items="${listComTest}" var="com" varStatus="varStatus" >
+            <tr class="patientRow"  >	
+                <td>${com.patient.patientIdentifier} </td>
+                <td>${com.patient.givenName} ${com.patient.middleName} ${com.patient.familyName}</td>
+                <td>${com.patient.age} </td>
+                <td>${com.patient.gender} </td>
+                <td>  <c:forEach items="${listComTestAll}" var="c" varStatus="varStatus" >
+                        <c:if test="${c.patient.patientId eq com.patient.patientId}">
+                            <span class="span" onClick="getPatientReportFromQueue('${c.patient.patientId}', '${c.concept}');"> ${c.concept.name} </span> &emsp;&emsp;
+                        </c:if>
+                    </c:forEach>
+                </td>
+            </tr>
+        </c:forEach>
+    </c:when>
+    <c:otherwise>
+        <span style="color:red">No Patient Found.</span>
+    </c:otherwise>
+</c:choose>
 </table>

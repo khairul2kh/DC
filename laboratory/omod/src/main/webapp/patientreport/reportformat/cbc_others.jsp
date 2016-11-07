@@ -319,7 +319,7 @@
 </tr>
 
 <tr>
-    <td colspan="4"> &nbsp;&nbsp;<u style="font-weight:bold;">d Cell Indices</u>
+    <td colspan="4"> &nbsp;&nbsp;<u style="font-weight:bold;">red Cell Indices</u>
 </td>
 </tr>
 <tr>
