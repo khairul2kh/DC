@@ -212,8 +212,12 @@
         </tbody>
     </table>
     <label style="position:fixed; bottom:5px; font-size: 12px; width:100%" >
-        <label style="position:fixed; bottom:70px; padding-left:300px;">  <b style="text-decoration: overline dotted black; font-weight: normal">  Medical Technologist </b> </label>
-        <label style="position:fixed; bottom:70px;">  <b style="text-decoration: overline dotted black; font-weight: normal">  Lab Incharge  </b> </label>
+        <label style="position:fixed; bottom:7px; left:200px; font-size:13px;"> <span  style="text-decoration: overline dotted black;">  Lab Incharge </span>  <br>  <b> Md. Mostafizar Rahman </b> <br> 
+            MTL BSc in Health Technology(DU)<br> 
+            Lab in Charge Dept of <br>
+            Microbiology NICVD, Dhaka.
+        </label>
+        <label style="position:fixed; bottom:70px;">  <b style="text-decoration: overline dotted black; font-weight: normal">Medical Technologist </b> </label>
         <table style="width:95%"> 
             <thead>
                 <tr> 	
@@ -222,7 +226,7 @@
                 </tr>
             </thead>  
             <tr>	
-                <td>  </td>
+                <td style="font-size: 13px;"> 		  </td>
                 <td style="font-size: 13px;">
                     <c:if test="${not empty docInfo}">
                         <b>${docInfo.docName}</b><br>
