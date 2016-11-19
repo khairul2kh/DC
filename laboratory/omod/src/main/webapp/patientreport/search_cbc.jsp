@@ -23,6 +23,7 @@
             <c:when test="${investigation eq '2543'}">
                 <div class="div1">   <h2>ELECTROLYTES REPORT</h2></div><br>
             </c:when>
+
             <c:otherwise>
                 <!--  <h2>ALL TESTS BY GROUP</h2> -->
             </c:otherwise>                
@@ -43,6 +44,8 @@
                             <th style="padding-left:5px; width:30%"> Reference Range </th> 
                         </tr>
                     </thead> 
+                </c:when>
+                <c:when test="${investigation eq '5718'}">
                 </c:when>
                 <c:otherwise>
                     <thead>
@@ -139,7 +142,15 @@
                         </tr>
                     </thead> 
                 </c:when>
+                <c:when test="${investigation eq '5718'}">
+                    <tr>
+                        <td colspan="4"><%@ include file="../patientreport/reportformat/patientInfo.jsp"%> <br></td>
+                    </tr>
+                </c:when>
                 <c:otherwise>
+                    <tr>
+                        <td colspan="4"><%@ include file="../patientreport/reportformat/patientInfo.jsp"%> <br></td>
+                    </tr>
                     <tr>
                         <th class="right" style="padding:5px 5px 5px 5px; border-right:1px solid #fff; width:40%; ">   &nbsp;   Test </th>
                         <th class="right" style="border-left:1px solid #fff; border-right:1px solid #fff; padding-left:5px; width:13%;"> Result </th>

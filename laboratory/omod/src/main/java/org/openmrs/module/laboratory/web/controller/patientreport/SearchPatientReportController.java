@@ -309,7 +309,7 @@ public class SearchPatientReportController {
             return "/module/laboratory/patientreport/search_immu"; // Immunology 
         } else if ((investigation.equals("2415")) || (investigation.equals("3117"))) {
             return "/module/laboratory/patientreport/search_urine_stool"; // Urine and Stool
-        } else if (investigation.equals("2410") || investigation.equals("2543")) {
+        } else if (investigation.equals("2410") || investigation.equals("2543") || investigation.equals("5718")) {
             return "/module/laboratory/patientreport/search_cbc"; // Immunology 
         }
         else {

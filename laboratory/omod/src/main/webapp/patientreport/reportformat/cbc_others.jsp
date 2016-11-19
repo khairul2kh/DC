@@ -461,7 +461,7 @@
             <td style="padding-left:0px; width:15%;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5187'}">
-                        ${t.value}  
+                        <b> ${t.value}  </b>
                     </c:if>
                 </c:forEach> 
             </td>
@@ -492,7 +492,7 @@
             <td style="padding-left:0px; width:15%;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5188'}">
-                        ${t.value}  
+                       <b> ${t.value}  </b>
                     </c:if>
                 </c:forEach> 
             </td>
@@ -523,7 +523,7 @@
             <td style="padding-left:0px; width:15%;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5189'}">
-                        ${t.value}  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -554,7 +554,7 @@
             <td style="padding-left:0px; width:15%;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5190'}">
-                        ${t.value}  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -575,6 +575,101 @@
             </td>
         </tr>
     </c:if>
+</c:forEach>
+
+<!-- Mantrux Test (MT) -->
+<c:forEach items="${te}" var="te">  
+    <c:if test="${investigation eq '5718' && te.concept.conceptId eq '5718' }">
+        <tr style="border:none;"><td colspan="4">&nbsp;</td> </tr>
+        <tr align="center"> <td colspan="4"> <u style="font-weight:bold; font-size:17px;"> TUBERCULIN TEST REPORT </u> </td> </tr>	
+<tr> <td colspan="4">&nbsp;</td> </tr>
+
+<tr style="line-height:200%;">
+    <td width="6%"> &nbsp; </td>
+    <td ><b style="font-size:15px;"> Site of injection </b></td>
+    <td width="2%"> : </td>
+    <td style="padding-left:20px;" >  Medial aspect of forearm  </td> 
+</tr>
+
+<tr style="line-height:200%;">
+    <td width="6%"> &nbsp; </td>  
+    <td> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '5885' && t.groupName eq '5718'}">
+                <b style="font-size:15px;">  ${t.testName}  </b>
+            </c:if>	 
+        </c:forEach>
+    </td>
+    <td width="2%"> : </td>
+    <td style="padding-left:20px;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '5885' && t.groupName eq '5718'}">
+                <b> ${t.value}  </b>  
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr style="line-height:200%;">
+    <td width="6%"> &nbsp; </td>
+    <td ><b style="font-size:15px;"> Dose </b> </td>
+    <td width="2%"> : </td>
+    <td style="padding-left:20px;" > <span style="font-size:15px;"> 10 TU of PPD  </span></td> 
+</tr>
+<tr style="line-height:200%;">
+    <td width="6%"> &nbsp; </td> 
+    <td> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '5886' && t.groupName eq '5718'}">
+                <b style="font-size:15px;"> ${t.testName} </b> 
+            </c:if>	 
+        </c:forEach>
+    </td>
+    <td width="2%"> : </td>
+    <td style="padding-left:20px;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '5886' && t.groupName eq '5718'}">
+                <b> ${t.value}  </b>  
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr style="line-height:200%;">
+    <td width="10%"> &nbsp; </td>  
+    <td> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '5887' && t.groupName eq '5718'}">
+                <b style="font-size:15px;">  ${t.testName}  </b>
+            </c:if>	 
+        </c:forEach>
+    </td>
+    <td width="2%"> : </td>
+    <td style="padding-left:20px;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '5887' && t.groupName eq '5718'}">
+                <b> ${t.value}  </b>  
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+<tr style="line-height:200%;">
+    <td width="10%"> &nbsp; </td> 
+    <td> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6712' && t.groupName eq '5718'}">
+                <b style="font-size:15px;"> ${t.testName}  </b>
+            </c:if>	 
+        </c:forEach>
+    </td>
+    <td width="2%"> : </td>
+    <td style="padding-left:20px;"> 
+        <c:forEach items="${tmn}" var="t">
+            <c:if test="${t.investigation eq '6712' && t.groupName eq '5718'}">
+                <b> ${t.value}  </b>  
+            </c:if>
+        </c:forEach> 
+    </td>
+</tr>
+</c:if>
 </c:forEach>
 
 <style> 
