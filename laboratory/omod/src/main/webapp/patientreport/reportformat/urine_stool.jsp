@@ -21,7 +21,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4640' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -38,7 +38,7 @@
             <td style="padding-left:20px;" colspan="3"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4647' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -55,7 +55,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4649' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -72,7 +72,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4650' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -89,7 +89,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '2654' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -110,7 +110,7 @@
             <td style="padding-left:20px;" colspan="2"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4230' && t.groupName eq '2415'}">
-                        ${t.value}
+                        <b>${t.test}</b> 
                     </c:if>
                 </c:forEach> 
             </td>
@@ -128,7 +128,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '6632' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -146,7 +146,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '6633' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -164,7 +164,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5987' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -182,7 +182,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '2658' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -199,7 +199,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4232' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -216,7 +216,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '2210' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -234,7 +234,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '2659' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -251,7 +251,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '3105' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -268,7 +268,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '2655' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -285,7 +285,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '6778' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -305,7 +305,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5932' && t.groupName eq '2415'}">
-                        ${t.value}
+                        <b>${t.test}</b> 
                     </c:if>
                 </c:forEach> 
             </td>
@@ -322,7 +322,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '6634' && t.groupName eq '2415'}">
-                        ${t.value}
+                        <b>${t.test}</b> 
                     </c:if>
                 </c:forEach> 
             </td>
@@ -340,7 +340,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5931' && t.groupName eq '2415'}">
-                        ${t.value} 
+                        <b>${t.test}</b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -357,7 +357,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4669' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -374,7 +374,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '1871' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -391,7 +391,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '1870' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -408,7 +408,7 @@
             <td style="padding-left:20px;" colspan="3"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5992' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -425,7 +425,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '622' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -442,7 +442,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5993' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -459,7 +459,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4234' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -477,7 +477,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '6779' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -494,7 +494,7 @@
             <td style="padding-left:20px;" colspan="3">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '6780' && t.groupName eq '2415'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -523,7 +523,7 @@
     <td >
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6007' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -539,7 +539,7 @@
     <td> 
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '4230' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -558,7 +558,7 @@
     <td> 
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6638' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -574,7 +574,7 @@
     <td  >
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6011' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -592,7 +592,7 @@
     <td width="20%">
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6009' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -608,7 +608,7 @@
     <td  >
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6010' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -627,7 +627,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6008' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -646,7 +646,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '4233' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -666,7 +666,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6639' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -696,7 +696,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '5876' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -714,7 +714,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '621' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -730,7 +730,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '5931' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -748,7 +748,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '3902' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -764,7 +764,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6012' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -782,7 +782,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6641' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -798,7 +798,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '5932' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -817,7 +817,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6640' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>
@@ -833,7 +833,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '3906' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -853,7 +853,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '3903' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -873,7 +873,7 @@
 <td>
     <c:forEach items="${tmn}" var="t">
         <c:if test="${t.investigation eq '613' && t.groupName eq '3117'}">
-            ${t.value}
+            <b>${t.test}</b> 
         </c:if>
     </c:forEach> 
 </td>	
@@ -891,7 +891,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6642' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -907,7 +907,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '3904' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -925,7 +925,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6643' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -941,7 +941,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '712' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -959,7 +959,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '6644' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -975,7 +975,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '3905' && t.groupName eq '3117'}">
-                ${t.value}
+                <b>${t.test}</b> 
             </c:if>
         </c:forEach> 
     </td>	
@@ -993,7 +993,7 @@
     <td>
         <c:forEach items="${tmn}" var="t">
             <c:if test="${t.investigation eq '3907' && t.groupName eq '3117'}">
-                ${t.value}  
+                <b>${t.test}</b>   
             </c:if>
         </c:forEach> 
     </td>
@@ -1018,7 +1018,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5187'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -1050,7 +1050,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5188'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -1082,7 +1082,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5189'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
@@ -1114,7 +1114,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5190'}">
-                        ${t.value}  
+                        <b>${t.test}</b>   
                     </c:if>
                 </c:forEach> 
             </td>
