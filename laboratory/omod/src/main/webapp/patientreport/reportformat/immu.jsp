@@ -1214,7 +1214,7 @@
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5267' }">
                         &nbsp;&nbsp; 
-                        <b>${t.test}</b> 
+                        <b>${t.value}</b> 
                     </c:if> 
                 </c:forEach>
             </td>
