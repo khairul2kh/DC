@@ -25,7 +25,7 @@
             <td style="padding-left:20px;"> 
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4734'}">
-                        <b> ${t.test}  </b>  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -58,7 +58,7 @@
             <td style="padding-left:20px;">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '4735'}">
-                        <b> ${t.test}  </b>  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -99,7 +99,7 @@
             <td style="padding-left:20px;">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5903'}">
-                        <b> ${t.test}  </b>  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -130,7 +130,7 @@
             <td style="padding-left:20px;">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5850'}">
-                        <b> ${t.test}  </b>  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -162,7 +162,7 @@
             <td style="padding-left:20px;">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5848'}">
-                        <b> ${t.test}  </b>  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -193,7 +193,7 @@
             <td style="padding-left:20px;">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '5849'}">
-                        <b> ${t.test}  </b>  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
@@ -225,7 +225,7 @@
             <td style="padding-left:20px;">
                 <c:forEach items="${tmn}" var="t">
                     <c:if test="${t.investigation eq '2805'}">
-                        <b> ${t.test}  </b>  
+                        <b> ${t.value}  </b>  
                     </c:if>
                 </c:forEach> 
             </td>
