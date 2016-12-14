@@ -78,11 +78,11 @@ public class EditRadiologyCustomForm {
             // File file = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/file/" + patientId+"-"+testName+ ".txt"));
             testName = replaceInvalidCharacter(testName);
 
-            boolean isFolderCreated = new File("D:\\OpenMRS\\Radiology\\DefaultTest").mkdirs();
+            boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\DefaultTest").mkdirs();
 
             System.out.println("****************************8" + testName);
 
-            File file = new File("D:\\OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
+            File file = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
 
             if (!file.exists()) {
                 System.out.println("****************************i am in" + testName);
@@ -128,7 +128,7 @@ public class EditRadiologyCustomForm {
         BufferedReader reader = null;
         StringBuilder stringBuilder = null;
         try {
-            File testFile = new File("D:\\OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
+            File testFile = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
             if (!testFile.exists()) {
                 return "";
             }

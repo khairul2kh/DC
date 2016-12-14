@@ -94,7 +94,11 @@ public class ResultController {
     @RequestMapping(method = RequestMethod.POST)
     public String saveForm(@ModelAttribute("form") RadiologyForm form, HttpServletRequest request,
             Model model) {
-        saveContentAsTextFile(form.getContent(), form.getConceptName(), form.getId(), form.getOrderId(), form.getPatientId(), request);
+        saveContentAsTextFile(form.getContent(), 
+                form.getConceptName(), 
+                form.getId(), 
+                form.getOrderId(), 
+                form.getPatientId(), request);
 
         return "/module/radiology/worklist/editRadiologyCustomFormResult";
     }
@@ -104,14 +108,14 @@ public class ResultController {
         StringBuilder stringBuilder = null;
         try {
             
-            boolean isFolderCreated = new File("D:\\OpenMRS\\Radiology\\TestFiles").mkdirs();
+            boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\TestFiles").mkdirs();
 
-            File testFile = new File("D:\\OpenMRS\\Radiology\\TestFiles\\" + fileName);
+            File testFile = new File("K:\\OpenMRS\\Radiology\\TestFiles\\" + fileName);
 
             if (!testFile.exists()) {
 //                String[] parts = fileName.split("-");
 //              String  name = parts[1];
-                testFile = new File("D:\\OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
+                testFile = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
             }
 
             if (!testFile.exists()) {
@@ -148,10 +152,10 @@ public class ResultController {
 
         try {
 
-            boolean isFolderCreated = new File("D:\\OpenMRS\\Radiology\\TestFiles").mkdirs();
+            boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\TestFiles").mkdirs();
 
-            File file = new File("D:\\OpenMRS\\Radiology\\TestFiles\\" + patientId + "_" + orderId + "-" + replaceCharacterToString(testName) + ".txt");
-
+            File file = new File("K:\\OpenMRS\\Radiology\\TestFiles\\" + patientId + "_" + orderId + "-" + replaceCharacterToString(testName) + ".txt");
+            
             if (!file.exists()) {
                 file.createNewFile();
             }

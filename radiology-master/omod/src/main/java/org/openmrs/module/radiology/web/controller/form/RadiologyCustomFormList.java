@@ -41,9 +41,9 @@ public class RadiologyCustomFormList {
     public List<RadiologyForm> getAllForms() {
         List<RadiologyForm> fileList = new ArrayList();
 
-        boolean isFolderCreated = new File("D:\\OpenMRS\\Radiology\\DefaultTest").mkdirs();
+        boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\DefaultTest").mkdirs();
 
-        File dir = new File("D:\\OpenMRS\\Radiology\\DefaultTest");
+        File dir = new File("K:\\OpenMRS\\Radiology\\DefaultTest");
         for (File file : dir.listFiles()) {
 
             //fileList.add(new RadiologyForm(file.getName()));

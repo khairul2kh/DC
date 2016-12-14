@@ -44,7 +44,7 @@ public class ShowRadiologyFormController {
         BufferedReader reader = null;
         StringBuilder stringBuilder = null;
         try {
-            File testFile = new File("D:\\OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
+            File testFile = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
             if (!testFile.exists()) {
                 return "";
             }
