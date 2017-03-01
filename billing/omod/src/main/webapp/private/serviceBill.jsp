@@ -464,11 +464,12 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
             <tr > 
                 <td colspan="3" style="border-right: solid 4px #ccc; background:#BCE7F5;">
                     <textarea placeholder="Please Write If you want Remarks" style="width:70%; text-align:left;" rows="1" title="Remarks" name="rem" id="rem" ></textarea> 				
-                    <span style="font-size:16px; font-weight:bold; float:right; ">  Total Bill</span> 
+                    <span style="font-size:16px; font-weight:bold; float:right; "> Total Bill</span> 
                 </td>
                 <td align="right"><input type="text" id="totalBill" name="totalBill"  readOnly="true" onclick="alert('This Field Read Only!!!!');"
                            style="width:100px; text-align:center;  color:blue;  font-size:18px; font-weight:bold; "/>
-                    <span style="font-size:20px; font-weight:bold;">&#2547; </span></td>
+                    <span style="font-size:20px; font-weight:bold;">&#2547; </span>
+                </td>
             </tr>
             <tr>
                 <td colspan="4"> <input type="checkbox" id="paid" name="paid" value="1" text="Paid"/> Paid &emsp;&emsp;&emsp;
