@@ -246,6 +246,20 @@
                           
         </sql>
     </diff>
+    
+     <diff>
+        <version>1.0.4</version>
+        <author>Md Khairul Islam</author>
+        <date>07 June 2016</date>
+        <description>
+            patient_search add column phone no.
+        </description>
+        <sql>
+            ALTER TABLE `patient_search` 
+            ADD COLUMN `phone_no` varchar(30) DEFAULT NULL
+                          
+        </sql>
+    </diff>
 
 
 </sqldiff>

@@ -263,9 +263,12 @@ public class FindCreatePatientController {
             ms.saveDiaBillingQueue(diaBill);
 
             //patient search identifier replace with custom
+             String phone=request.getParameter("person.attribute.16");
+            
             PatientSearch ps = ms.getPatientById(patient.getId());
             ps.setIdentifier(diaBill.getIdentifier());
             ms.savePatientSearch(ps);
+            ps.setPhoneNo(phone);
 
             PatientIdentifier pi = ms.getPatIdentByPatientId(patient.getId());
             pi.setIdentifier(diaBill.getIdentifier());
