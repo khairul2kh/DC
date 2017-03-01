@@ -107,7 +107,7 @@
                                         <img src="${pageContext.request.contextPath}/images/female.gif" />
                                     </c:otherwise>
                                 </c:choose></td>
-                            <td>   </td>
+                        <td>${patient.phoneNo}</td>
                         </tr>
                     </c:forEach>
                 </tbody>

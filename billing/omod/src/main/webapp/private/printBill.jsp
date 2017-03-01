@@ -254,9 +254,17 @@
         }
 
     </style>
-    <br><br><br>
+
     <!-- Customer Copy -->
     <table class="kha1" style="margin-left: 15px;">
+	
+	 <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
+	  <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
+	   <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
+	
+	
+	    <br>
+	
         <tr>
             <td> <img height="40px;" src="${pageContext.request.contextPath}/barcode/${billId}.png" />   </td>
             <td align="center"> <input type="text" value="Customer Copy" style="border: 2px solid #ccc; border-radius:20px; font-size:14px; text-align:center;" />   </td>
@@ -390,7 +398,7 @@
         <span class="printfont" >Received with thanks : &nbsp;</span><span id="totalValue2" class="printfont1"> </span> <span class="printfont1">Taka only</span>  <br>
         <span class="printfont" style="margin-left:-10px;" >&nbsp; Bill Officer : ${billOfficer.givenName}   ${billOfficer.familyName} </span>
 
-        <span class="vt">Powered By: Crystal Technology Bangladesh Ltd. </span>
+        <span class="vt">Powered By: Next Generation Technology (NGT).</span>
     </label>
 
 
@@ -421,7 +429,11 @@
     </script>
     <!-- Lab Copy -->
     <p style="page-break-after:always;"></p>
-    <br><br><br>
+	
+		 <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
+	  <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
+	   <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
+    <br>
 
     <table class="kha1" style="margin-left: 15px;">
         <tr>
@@ -521,12 +533,15 @@
         <span class="printfont" >Received with thanks : &nbsp;</span><span id="totalValue3" class="printfont1"> </span> <span class="printfont1">Taka only</span>  <br>
 
         <span class="printfont" style="margin-left:-10px;" >&nbsp; Bill Officer : ${billOfficer.givenName}   ${billOfficer.familyName} </span>
-        <span class="vt">Powered By: Crystal Technology Bangladesh Ltd. </span>
+        <span class="vt">Powered By: Next Generation Technology (NGT).</span>
     </label>
 
     <!-- Office Copy -->
     <p style="page-break-after:always;"></p>
-    <br><br><br>
+		 <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
+	  <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
+	   <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
+    <br>
 
     <table class="kha1" style="margin-left: 15px;">
         <tr>
@@ -625,7 +640,7 @@
                style="border:1px solid; height:40px; background-color: #eee; font-size:20px; width:100px; border-radius:20px; text-align:center;" /> <br><br>
         <span class="printfont" >Received with thanks : &nbsp;</span><span id="totalValue4" class="printfont1"> </span> <span class="printfont1">Taka only</span>  <br>
         <span class="printfont" style="margin-left:-10px;" >&nbsp; Bill Officer : ${billOfficer.givenName}   ${billOfficer.familyName} </span>
-        <span class="vt">Powered By: Crystal Technology Bangladesh Ltd. </span>
+        <span class="vt">Powered By: Next Generation Technology (NGT).</span>
     </label>
 
 </div>
