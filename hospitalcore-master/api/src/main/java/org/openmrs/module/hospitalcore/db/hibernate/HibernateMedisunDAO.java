@@ -245,10 +245,12 @@ public class HibernateMedisunDAO implements MedisunDAO {
     public List<PatientSearch> listPatientSearch(String searchKey, int page) throws DAOException {
         String hql = null;
         hql = "from PatientSearch ps where ps.identifier LIKE '%"
-                + searchKey
-                + "%' "
+                + searchKey  + "%' " 
+                
+                + " OR ps.phoneNo LIKE '%" + searchKey + "%' "
+               
                 // + "OR ps.fullname LIKE '%" + searchKey + "%')";
-                + "OR ps.fullname LIKE '%" + searchKey + "%')";
+                + " OR ps.fullname LIKE '%" + searchKey + "%')";
 
         int firstResult = (page - 1) * BillingConstants.PAGESIZE;
         Session session = sessionFactory.getCurrentSession();

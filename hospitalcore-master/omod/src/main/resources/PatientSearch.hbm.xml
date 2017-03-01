@@ -19,5 +19,6 @@
 		<property name="birthdate" column="birthdate" />
 		<property name="age" column="age" />
 		<property name="personNameId" column="person_name_id" />
+                 <property name="phoneNo" column="phone_no" />
 	</class>
 </hibernate-mapping>

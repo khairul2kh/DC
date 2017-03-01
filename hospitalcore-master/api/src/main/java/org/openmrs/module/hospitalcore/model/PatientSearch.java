@@ -1,23 +1,24 @@
 /**
- *  Copyright 2010 Society for Health Information Systems Programmes, India (HISP India)
+ * Copyright 2010 Society for Health Information Systems Programmes, India (HISP
+ * India)
  *
- *  This file is part of Hospital-core module.
+ * This file is part of Hospital-core module.
  *
- *  Hospital-core module is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
-
- *  Hospital-core module is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * Hospital-core module is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Hospital-core module.  If not, see <http://www.gnu.org/licenses/>.
+ * Hospital-core module is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
  *
- **/
-
+ * You should have received a copy of the GNU General Public License along with
+ * Hospital-core module. If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ */
 package org.openmrs.module.hospitalcore.model;
 
 import java.io.Serializable;
@@ -25,96 +26,105 @@ import java.util.Date;
 
 public class PatientSearch implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private Integer patientId;
-	private String identifier;
-	private String fullname;
-	private String givenName;
-	private String middleName;
-	private String familyName;
-	private String gender;
-	private Date birthdate;
-	private Integer age;
-	private Integer personNameId;
+    private Integer patientId;
+    private String identifier;
+    private String fullname;
+    private String givenName;
+    private String middleName;
+    private String familyName;
+    private String gender;
+    private Date birthdate;
+    private Integer age;
+    private Integer personNameId;
+    private String phoneNo;
 
-	public Integer getPatientId() {
-		return patientId;
-	}
+    public String getPhoneNo() {
+        return phoneNo;
+    }
 
-	public void setPatientId(Integer patientId) {
-		this.patientId = patientId;
-	}
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
 
-	public String getIdentifier() {
-		return identifier;
-	}
+    public Integer getPatientId() {
+        return patientId;
+    }
 
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
-	}
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
 
-	public String getFullname() {
-		return fullname;
-	}
+    public String getIdentifier() {
+        return identifier;
+    }
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
 
-	public String getGivenName() {
-		return givenName;
-	}
+    public String getFullname() {
+        return fullname;
+    }
 
-	public void setGivenName(String givenName) {
-		this.givenName = givenName;
-	}
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
 
-	public String getMiddleName() {
-		return middleName;
-	}
+    public String getGivenName() {
+        return givenName;
+    }
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
+    }
 
-	public String getFamilyName() {
-		return familyName;
-	}
+    public String getMiddleName() {
+        return middleName;
+    }
 
-	public void setFamilyName(String familyName) {
-		this.familyName = familyName;
-	}
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public String getFamilyName() {
+        return familyName;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
 
-	public Date getBirthdate() {
-		return birthdate;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public Integer getAge() {
-		return age;
-	}
+    public Date getBirthdate() {
+        return birthdate;
+    }
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
 
-	public Integer getPersonNameId() {
-		return personNameId;
-	}
+    public Integer getAge() {
+        return age;
+    }
 
-	public void setPersonNameId(Integer personNameId) {
-		this.personNameId = personNameId;
-	}
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getPersonNameId() {
+        return personNameId;
+    }
+
+    public void setPersonNameId(Integer personNameId) {
+        this.personNameId = personNameId;
+    }
 }
