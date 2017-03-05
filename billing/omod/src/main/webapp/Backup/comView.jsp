@@ -306,7 +306,6 @@
 
                         <c:forEach items="${diaComCal}" var="patient"  varStatus="index">
                             <c:set var="com" value="${patient.commission}"/>
-
                             <c:set var="ser" value="${patient.servicePrice}"/>
                             <c:set var="ac" value="${ (ser * com)/100 }"/>
 
@@ -319,79 +318,67 @@
                             <c:set var="onePer" value="${ (serPri*1)/100}" />
                             <c:set var="min"  value="${ (comPer - twenty)*onePer }" />
 
-                            <!--  For 50% --->
-                            <c:if test="${patient.commission eq '50'}">
-                                <c:if test="${ comPer > 30 }">
-                                    <c:set var="payable" value="${0.00}"/>
-                                    <c:set var="less" value="${0.0}"/>
-                                </c:if>
-                                <c:if test="${comPer <= 30}">
-                                    <c:set var="payable" value="${ ac - comm }"/>
-                                    <c:set var="less" value="${00}"/>
-                                </c:if>
+                            <c:if test="${ comPer > 30 }">
+                                <c:set var="payable" value="${0.00}"/>
+                                <c:set var="less" value="${0.0}"/>
                             </c:if>
 
-                            <!--  For 20% --->
-                            <c:if test="${patient.commission eq '20'}">
-                                <c:if test="${ comPer > 20 }">
-                                    <c:set var="payable" value="${0.00}"/>
-                                    <c:set var="less" value="${0.0}"/>
-                                </c:if>
-                                <c:if test="${comPer <= 20}">
-                                    <c:set var="payable" value="${ ac - comm }"/>
-                                    <c:set var="less" value="${00}"/>
-                                </c:if>
+                            <c:if test="${ comPer < 20 }">
+                                <c:set var="payable" value="${ (ser * com)/100 }"/>
+                                <c:set var="less" value="${0.00}"/>
                             </c:if>
 
-                            <!--  For 25% --->
-                            <c:if test="${patient.commission eq '25'}">
-                                <c:if test="${ comPer > 20 }">
-                                    <c:set var="payable" value="${0.00}"/>
-                                    <c:set var="less" value="${0.0}"/>
-                                </c:if>
-                                <c:if test="${comPer <= 25}">
-                                    <c:set var="payable" value="${ ac - comm }"/>
-                                    <c:set var="less" value="${00}"/>
-                                </c:if>
+                            <c:if test="${ comPer >= 20 && comPer <= 30}">
+                                <c:set var="payable" value="${ ac - min }"/>
+                                <c:set var="less" value="${00}"/>
                             </c:if>
 
-                            <tr> 
+
+                            <tr > 
                                 <td style="display:none ;"><input type="text" value="${patient.refId}"  id="comId" name="comId" />
                                     <input type="text" value="${patient.id}"  id="${index.count}id" name="${index.count}id" />
-                                </td>   <!-- sl no -->
-                                <td style="border-right:1px solid #D8D8D8;"><openmrs:formatDate date="${patient.createdDate}" /></td>   <!-- date -->
-                                <td style="border-right:1px solid #D8D8D8;padding-left:10px;"> ${patient.diaPatientServiceBill.billId}  </td> <!-- bill id -->
-                                <td style="border-right:1px solid #D8D8D8;">${patient.patient.givenName} ${patient.patient.familyName}  </td> <!-- patient name -->
-                                <td style="border-right:1px solid #D8D8D8;"> ${patient.serviceName}  </td> <!-- investigation -->
+
+                                </td>
+                                <td style="border-right:1px solid #D8D8D8;"><openmrs:formatDate date="${patient.createdDate}" /></td>  
+                                <td style="border-right:1px solid #D8D8D8;padding-left:10px;"> ${patient.diaPatientServiceBill.billId}  </td>
+                                <td style="border-right:1px solid #D8D8D8;">${patient.patient.givenName} ${patient.patient.familyName}  </td>
+                                <td style="border-right:1px solid #D8D8D8;"> ${patient.serviceName}  </td>
                                 <td style="border-right:1px solid #D8D8D8; text-align:right; font-size:16px; padding-right:10px;"> 
 
-                                    ${patient.servicePrice}   </td> <!-- service price -->
+                                    ${patient.servicePrice}   </td>
 
                                 <td style="border-right:1px solid #D8D8D8; display:none; text-align:center;"> 
                                     <input type="value" id="${index.count}lessAm" name="${index.count}lessAm" class="lessAm" readOnly="true"
                                            value="${patient.lessAmount}" /> 
-                                </td>  <!-- referral amount -->
+                                </td>
                                 <td style="border-right:1px solid #D8D8D8; text-align:right; padding-right:10px; font-size:16px;"> 
                                     ${ac}  									  
-                                </td> <!-- less amount -->
+                                </td>
                                 <td style="border-right:1px solid #D8D8D8; text-align:right; font-size:16px;">
                                     <fmt:formatNumber type="number" maxFractionDigits="2" value="${comPer}" /> 									    
-                                </td> <!-- commission % -->
+                                </td>
+
                                 <td style="border-right:1px solid #D8D8D8; text-align:center;">
                                     <input type="value" id="${index.count}commission" name="${index.count}commission" class="commission"  
                                            value="${patient.commission}" onkeyup="updatePrice(${index.count});"/> 
                                     <input type="hidden" id="${index.count}realCommission" value="${patient.commission}" />
+
                                     <input type="button" id="${index.count}updateCommission" class="bs" style="display:none;" value="Update" onclick="updateCommission(${index.count});" />
-                                </td> <!-- payable -->
+
+                                </td> 
 
                                 <td style="border-right:1px solid #D8D8D8; text-align:right; padding-right:20px; font-size:16px;"> 
+
                                     <fmt:formatNumber type="number" maxFractionDigits="2" value="${payable}" /> </td>
 
                             </tr>
                             <c:set var="rate" value="${rate + payable}"/>
                             <c:set var="servicePrice1" value="${servicePrice1 + ser }"/>
                             <c:set var="refferel" value="${refferel + less}"/>
+
+
                         </c:forEach>
+
                     </tbody>
                 </table>
             </c:when>
@@ -403,7 +390,7 @@
 </div>
 <br>
 <c:if test="${not empty diaComCal}">
-    <c:set var="rateTotal"> <fmt:parseNumber  type="number" value="${rate}" /> </c:set> 
+    <c:set var="rateTotal"> <fmt:parseNumber  type="number" value="${rate}" /> </c:set>
 
         <div  style="margin-left:100px;">
 
@@ -420,6 +407,7 @@
         <span style="font-size:16px; padding-left: 0px; font-weight:bold; color:#000;">Doctor Commission : &emsp; </span> 
         <input type="value" id="docNet" name="docNet"  readOnly="true"
                style="width:150px; height:35px; text-align:right;  color:green;  font-size:18px; font-weight:bold; background-color:#fff;"/>   
+
         &emsp;&emsp;&emsp;
         <span style="font-size:16px; padding-left: 0px; font-weight:bold; color:#000;">Paid Amount : </span> &emsp;  &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="value" id="paid" name="paid" style="width:150px; text-align:center; height:35px; color:red;  font-size:18px; font-weight:bold; background-color:#fff;"
@@ -428,6 +416,7 @@
         &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
         <span style="font-size:16px; padding-left: 0px; font-weight:bold; color:#000;">Due Amount : </span> &emsp;  &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="value" id="due" name="due" style="width:150px; text-align:center;  color:blue;  font-size:18px; font-weight:bold; background-color:#fff;" />
+
     </div>
 
     <br>
@@ -505,40 +494,19 @@
                         <c:set var="onePer" value="${ (serPri*1)/100}" />
                         <c:set var="min"  value="${ (comPer - twenty)*onePer }" />
 
-                        <!--  For 50% --->
-                        <c:if test="${patient.commission eq '50'}">
-                            <c:if test="${ comPer > 30 }">
-                                <c:set var="payable" value="${0.00}"/>
-                                <c:set var="less" value="${0.0}"/>
-                            </c:if>
-                            <c:if test="${comPer <= 30}">
-                                <c:set var="payable" value="${ ac - comm }"/>
-                                <c:set var="less" value="${00}"/>
-                            </c:if>
+                        <c:if test="${ comPer > 30 }">
+                            <c:set var="payable" value="${0.00}"/>
+                            <c:set var="less" value="${0.0}"/>
                         </c:if>
 
-                        <!--  For 20% --->
-                        <c:if test="${patient.commission eq '20'}">
-                            <c:if test="${ comPer > 20 }">
-                                <c:set var="payable" value="${0.00}"/>
-                                <c:set var="less" value="${0.0}"/>
-                            </c:if>
-                            <c:if test="${comPer <= 20}">
-                                <c:set var="payable" value="${ ac - comm }"/>
-                                <c:set var="less" value="${00}"/>
-                            </c:if>
+                        <c:if test="${ comPer < 20 }">
+                            <c:set var="payable" value="${ (ser * com)/100 }"/>
+                            <c:set var="less" value="${0.00}"/>
                         </c:if>
 
-                        <!--  For 25% --->
-                        <c:if test="${patient.commission eq '25'}">
-                            <c:if test="${ comPer > 20 }">
-                                <c:set var="payable" value="${0.00}"/>
-                                <c:set var="less" value="${0.0}"/>
-                            </c:if>
-                            <c:if test="${comPer <= 25}">
-                                <c:set var="payable" value="${ ac - comm }"/>
-                                <c:set var="less" value="${00}"/>
-                            </c:if>
+                        <c:if test="${ comPer >= 20 && comPer <= 30}">
+                            <c:set var="payable" value="${ ac - min }"/>
+                            <c:set var="less" value="${00}"/>
                         </c:if>
                         <tr> 
                             <td   style="padding-left: 5px; border-bottom:1pt solid #000; border-right: 1px solid #000;" >
