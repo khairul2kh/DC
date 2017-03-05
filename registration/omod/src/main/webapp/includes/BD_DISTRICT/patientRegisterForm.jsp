@@ -532,14 +532,16 @@
 
 <div id="patientSearchResult"></div>
 <form id="patientRegistrationForm" method="POST" class="kha-reg-form">
+
+  
     <h1>Patient Registration Form   
         <b style="font-size:15px; color:green; padding-left:40%;">	 Mr.  ${user} Today Registration : ${count}    </b>
     </h1>
     <table cellspacing="0">
         <tr>
-            <td valign="top" class="cell"><b>Name <span style="color:red;"> * </span></b></td>
+            <td valign="top" class="cell"><b>Patient Name <span style="color:red;"> * </span></b></td>
             <td class="cell"><input id="patientName" type="hidden"
-                                    name="patient.name" />
+                                    name="patient.name"/>
                 <div id="searchbox"></div>
                 <div id="numberOfFoundPatients"></div></td>
             <td class="cell" style="display:none;"><b>ID Number <span style="color:red;"> * </span> &nbsp;&nbsp; 
@@ -548,7 +550,7 @@
         </tr>
         <tr>
             <td class="cell"><b>Demographics <span style="color:red;"> * </span></b></td>
-            <td class="cell">dd/mm/yyyy<br />
+            <td class="cell">dd/mm/yyyy<br/>
                 <table>
                     <tr>
                         <td>Age</td>
@@ -558,7 +560,7 @@
                     <tr>
                         <td><span id="estimatedAge"></span></td>
                         <td><input type="hidden" id="calendar" /> 
-                            <input id="birthdate" type="text" style="width:85%" name="patient.birthdate" /> 
+                            <input id="birthdate" type="text" style="width:85%" name="patient.birthdate" placeholder="Enter age"/> 
                             <img id="calendarButton" src="moduleResources/registration/calendar.gif" /> 
                             <input id="birthdateEstimated" type="hidden"   name="patient.birthdateEstimate" value="true" />
                         </td>
@@ -566,7 +568,7 @@
                                 <option value="Any"></option>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
-                                <option value="O">Others</option>
+                                <option value="T">Transgender</option>
                             </select></td>
                     </tr>
                 </table></td>
@@ -579,7 +581,7 @@
 
         <tr>
             <td><b>Phone Number:</b></td>
-            <td><input id="patientPhoneNumber" type="text"  name="person.attribute.16" style="width: 200px;" />
+            <td><input id="patientPhoneNumber" type="text"  name="person.attribute.16" style="width: 200px;" placeholder="Enter phone no"/>
 
             <td><span style="color: red;" id="healthIdValidationMessage">
                 </span>
@@ -609,7 +611,7 @@
 
         <input type="text"  class="ui-autocomplete-input ui-widget-content ui-corner-all"
                id="docInfo" style="width: 300px; font-size:16px" value=""
-               name="docInfo" ondblclick="this.value = '';" /> 
+               name="docInfo" ondblclick="this.value = '';" placeholder="Enter ref by doctor name"/> 
 
         <select id="selectedDocId" size="4" style="display:none;" name="selectedDocId" ><option value="0">Please Select</option></select>
 
@@ -618,7 +620,7 @@
     <td><b>CH</b>  <input type="text"
                           class="ui-autocomplete-input ui-widget-content ui-corner-all"
                           id="rmpName" style="width: 300px; font-size:16px" value=""
-                          name="rmpName" ondblclick="this.value = '';" />
+                          name="rmpName" ondblclick="this.value = '';" placeholder="Enter ref by ch name" />
         <select id="selectedRmpId" size="4" style="display:none;" name="selectedRmpId" ><option value="0">Please Select</option></select>
     </td>
     </tr>
@@ -629,7 +631,7 @@
             <input   type="text"
                      class="ui-autocomplete-input ui-widget-content ui-corner-all"
                      id="marName" style="width: 300px; font-size:16px" value=""
-                     name="marName" ondblclick="this.value = '';" /> 
+                     name="marName" ondblclick="this.value = '';" placeholder="Enter marketed by"/> 
 
             <select id="selectedMarId" size="4" style="display:none;" name="selectedMarId" ><option value="0">Please Select</option></select>
         </td>
@@ -660,9 +662,9 @@
     <input class="button" type="button" style="float: right;" value="Save" onclick="PAGE.submitonly();" /> 
     <input class="button" type="button" style="float: right;" value="Continue" onclick="PAGE.submit();" /> <br> <br>
 
-    <input class="button" type="button" style="float: center;" value="Add/Edit Ref By Name" onclick="window.open('refDoc.htm?', '_blank');")/>
-    <input class="button" type="button" style="float: center;" value="Add/Edit Marketed By Name" onclick="window.open('marketedBy.htm?', '_blank');")/>
-    <input class="button" type="button" style="float: center;" value="Add/Edit CH Name" onclick="window.open('refRmp.htm?', '_blank');")/>
+    <input class="button" type="button" style="float: center;" value="Add/Edit Ref By Doctor Name" onclick="window.open('refDoc.htm?', '_blank');")/>
+     <input class="button" type="button" style="float: center;" value="Add/Edit Ref By CH Name" onclick="window.open('refRmp.htm?', '_blank');")/>
+	<input class="button" type="button" style="float: center;" value="Add/Edit Marketed By Name" onclick="window.open('marketedBy.htm?', '_blank');")/>
 
 </form> 
 <script>
