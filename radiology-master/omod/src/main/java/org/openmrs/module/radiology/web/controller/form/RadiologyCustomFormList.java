@@ -17,6 +17,7 @@ import org.openmrs.api.ConceptService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.hospitalcore.RadiologyService;
 import org.openmrs.module.hospitalcore.form.RadiologyForm;
+import static org.openmrs.module.radiology.web.util.PagingUtil.DRIVER_LOCATION;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,9 +42,9 @@ public class RadiologyCustomFormList {
     public List<RadiologyForm> getAllForms() {
         List<RadiologyForm> fileList = new ArrayList();
 
-        boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\DefaultTest").mkdirs();
+        boolean isFolderCreated = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\DefaultTest").mkdirs();
 
-        File dir = new File("K:\\OpenMRS\\Radiology\\DefaultTest");
+        File dir = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\DefaultTest");
         for (File file : dir.listFiles()) {
 
             //fileList.add(new RadiologyForm(file.getName()));

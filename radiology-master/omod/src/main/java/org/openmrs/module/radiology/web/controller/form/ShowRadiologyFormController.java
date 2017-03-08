@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openmrs.Concept;
+import static org.openmrs.module.radiology.web.util.PagingUtil.DRIVER_LOCATION;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +45,7 @@ public class ShowRadiologyFormController {
         BufferedReader reader = null;
         StringBuilder stringBuilder = null;
         try {
-            File testFile = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
+            File testFile = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
             if (!testFile.exists()) {
                 return "";
             }

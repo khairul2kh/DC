@@ -21,6 +21,7 @@ import org.openmrs.module.hospitalcore.RadiologyService;
 import org.openmrs.module.hospitalcore.form.RadiologyForm;
 import org.openmrs.module.hospitalcore.model.RadiologyTest;
 import org.openmrs.module.hospitalcore.util.PatientUtils;
+import static org.openmrs.module.radiology.web.util.PagingUtil.DRIVER_LOCATION;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -108,14 +109,14 @@ public class ResultController {
         StringBuilder stringBuilder = null;
         try {
             
-            boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\TestFiles").mkdirs();
+            boolean isFolderCreated = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\TestFiles").mkdirs();
 
-            File testFile = new File("K:\\OpenMRS\\Radiology\\TestFiles\\" + fileName);
+            File testFile = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\TestFiles\\" + fileName);
 
             if (!testFile.exists()) {
 //                String[] parts = fileName.split("-");
 //              String  name = parts[1];
-                testFile = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
+                testFile = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
             }
 
             if (!testFile.exists()) {
@@ -152,9 +153,9 @@ public class ResultController {
 
         try {
 
-            boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\TestFiles").mkdirs();
+            boolean isFolderCreated = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\TestFiles").mkdirs();
 
-            File file = new File("K:\\OpenMRS\\Radiology\\TestFiles\\" + patientId + "_" + orderId + "-" + replaceCharacterToString(testName) + ".txt");
+            File file = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\TestFiles\\" + patientId + "_" + orderId + "-" + replaceCharacterToString(testName) + ".txt");
             
             if (!file.exists()) {
                 file.createNewFile();

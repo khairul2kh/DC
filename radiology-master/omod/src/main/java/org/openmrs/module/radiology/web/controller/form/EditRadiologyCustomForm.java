@@ -22,6 +22,7 @@ import org.openmrs.ConceptName;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.hospitalcore.form.RadiologyForm;
+import static org.openmrs.module.radiology.web.util.PagingUtil.DRIVER_LOCATION;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -78,11 +79,11 @@ public class EditRadiologyCustomForm {
             // File file = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/file/" + patientId+"-"+testName+ ".txt"));
             testName = replaceInvalidCharacter(testName);
 
-            boolean isFolderCreated = new File("K:\\OpenMRS\\Radiology\\DefaultTest").mkdirs();
+            boolean isFolderCreated = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\DefaultTest").mkdirs();
 
             System.out.println("****************************8" + testName);
 
-            File file = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
+            File file = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\DefaultTest\\" + testName + ".txt");
 
             if (!file.exists()) {
                 System.out.println("****************************i am in" + testName);
@@ -98,37 +99,14 @@ public class EditRadiologyCustomForm {
         }
 
     }
-
-//    private String getPropertiesTestCode(HttpServletRequest request, String testNames) {
-//
-//        try {
-//
-//            File file = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/radiologyMapping.properties"));
-//            File xmlFile = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/radiologyMapping.xml"));
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//            PropertyFilesUtil pf = new PropertyFilesUtil();
-//
-//            String propertyFileName = "DB.properties";
-//            // String xmlFileName = "DB.xml";
-//            pf.writePropertyFile(file, xmlFile);
-//            // readPropertyFile(propertyFileName, xmlFileName);
-//            // readAllKeys(propertyFileName, xmlFileName);
-//            // readPropertyFileFromClasspath(propertyFileName);
-//            return "";
-//        } catch (IOException ex) {
-//            Logger.getLogger(EditRadiologyCustomForm.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return null;
-//    }
+ 
 
     private String getReportContent(String fileName) {
 
         BufferedReader reader = null;
         StringBuilder stringBuilder = null;
         try {
-            File testFile = new File("K:\\OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
+            File testFile = new File(DRIVER_LOCATION +"OpenMRS\\Radiology\\DefaultTest\\" + fileName + ".txt");
             if (!testFile.exists()) {
                 return "";
             }
