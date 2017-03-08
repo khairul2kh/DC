@@ -124,7 +124,7 @@
 
             checkExistingForm();
         });
-		
+
         var fontSize = 3;
         $('#decrease').click(function() {
 
@@ -142,10 +142,10 @@
                 fontSize--;
             document.execCommand("fontSize", false, fontSize);
         });
-    
+
 
         $('#increase').click(function() {
-   
+
             var selectedText = getSelectedText();
             // alert(selectedText);
             if (selectedText === "") {
@@ -157,7 +157,6 @@
                 fontSize = 3;
             }
             if (fontSize < 7)
-   
                 fontSize++;
             document.execCommand("fontSize", false, fontSize);
         });
@@ -192,17 +191,17 @@
             }
         });
     }
-	
+
     // function printReport() {
-        // $("#patientReportPrintArea").printArea({
-            // mode: "popup",
-            // popClose: true
-        // });
+    // $("#patientReportPrintArea").printArea({
+    // mode: "popup",
+    // popClose: true
+    // });
     // }
-	
-	function printReport() {
-		var element = document.getElementById("textArea").outerHTML;
-        var a=jQuery("#textContent").val(element);
+
+    function printReport() {
+        var element = document.getElementById("textArea").outerHTML;
+        var a = jQuery("#textContent").val(element);
         var printer = window.open('left=50', 'top=50', 'width=200,height=100');
         printer.document.open("text/html");
         printer.document.write(document.getElementById('textArea').outerHTML);
@@ -234,7 +233,7 @@
         var element = document.getElementById("textArea").outerHTML;
         jQuery("#textContent").val(element);
         submitForm();
-		printReport();
+        printReport();
     }
 
     function goBack() {
@@ -242,7 +241,7 @@
 
     }
 
-	function getSelectedText() {
+    function getSelectedText() {
 
         var selObj = window.getSelection();
         // alert(selObj);
@@ -287,47 +286,47 @@
 
 <div id="center">
     <center>
-		<table  style="border-collapse: collapse;  border-radius: 10px; box-shadow: 0 0 0 1px #666; width:1020px; height: 150px;" > 
-						<tr>
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >SL.No <span style="float:right; font-style:normal;">:</span>  </td>            
-							<td colspan="2"> <b> &nbsp; ${patientId}</b>
+        <table  style="border-collapse: collapse;  border-radius: 10px; box-shadow: 0 0 0 1px #666; width:1020px; height: 150px;" > 
+            <tr>
+                <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >SL.No <span style="float:right; font-style:normal;">:</span>  </td>            
+                <td colspan="2"> <b> &nbsp; ${patientId}</b>
 
-								<div style="float:right; font-size:16px;">
-									<span  >Received date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span> 
-									<span  > &nbsp;&nbsp; Delivery date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span>  &nbsp;&nbsp;
-							</td> </div>
-						</tr>
-						<tr> 
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:16%; font-style: italic; " >Patient's Name <span style="float:right; font-style:normal;">:</span>  </td>
-							<td style="width:45%; font-size:16px;" > <b> &nbsp; ${patientName}</b></td>
-							<td style="font-style: italic; font-size:16px; text-align:right; ">
-								<span> Age   : <b> ${age} Year(s)</b></span>
-								<span> &nbsp;&nbsp; Sex  : 
-									<b> 
-										<c:choose> 
-											<c:when test="${gender eq 'M'}">Male</c:when> 
-											<c:otherwise>Female</c:otherwise> 
-										</c:choose> 
-									</b>
-								</span>  &nbsp;&nbsp;			
-							</td>				
-						</tr>
-						<tr>
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >Refd. By <span style="float:right; font-style:normal;">:</span>  </td>
-							<td colspan="5" style="font-size:16px;"> <b>&nbsp; ${refdBy}</b></td>
-						</tr>
-						<tr>
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >USG of <span style="float:right; font-style:normal;">:</span>  </td>
-							<td colspan="5" style="font-size:18px;"> <b>&nbsp; ${testName}</b></td>
-						</tr>
-					</table>
-	</center>
-	<br />
+                    <div style="float:right; font-size:16px;">
+                        <span  >Received date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span> 
+                        <span  > &nbsp;&nbsp; Delivery date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span>  &nbsp;&nbsp;
+                </td> </div>
+            </tr>
+            <tr> 
+                <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:16%; font-style: italic; " >Patient's Name <span style="float:right; font-style:normal;">:</span>  </td>
+                <td style="width:45%; font-size:16px;" > <b> &nbsp; ${patientName}</b></td>
+                <td style="font-style: italic; font-size:16px; text-align:right; ">
+                    <span> Age   : <b> ${age} Year(s)</b></span>
+                    <span> &nbsp;&nbsp; Sex  : 
+                        <b> 
+                            <c:choose> 
+                                <c:when test="${gender eq 'M'}">Male</c:when> 
+                                <c:otherwise>Female</c:otherwise> 
+                            </c:choose> 
+                        </b>
+                    </span>  &nbsp;&nbsp;			
+                </td>				
+            </tr>
+            <tr>
+                <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >Refd. By <span style="float:right; font-style:normal;">:</span>  </td>
+                <td colspan="5" style="font-size:16px;"> <b>&nbsp; ${refdBy}</b></td>
+            </tr>
+            <tr>
+                <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >USG of <span style="float:right; font-style:normal;">:</span>  </td>
+                <td colspan="5" style="font-size:18px;"> <b>&nbsp; ${testName}</b></td>
+            </tr>
+        </table>
+    </center>
+    <br />
     <form  id='radiologyForm' method="POST" enctype="multipart/form-data" class="formStyle">	
         <spring:bind path="form.conceptName"> 
             <td>
-				<input id="concept" type="hidden" name="${status.expression}" value="${status.value}" style="width:350px;"/>
-			</td>
+                <input id="concept" type="hidden" name="${status.expression}" value="${status.value}" style="width:350px;"/>
+            </td>
         </spring:bind>
 
         <spring:bind path="form.content">
@@ -347,17 +346,17 @@
 </div>
 
 <center>
-	<div style="margin-left: 11px; margin-right: auto; margin-bottom:50px;">
-                <input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Bold" onclick="document.execCommand('bold');" />
-		<input type="button" id="buttonAll" style="text-decoration: none;" class="italicstyleButton" value="Italic" onclick="document.execCommand('italic');" />
-		<input type="button" id="buttonAll" style="text-decoration: none;" class="underlinestyleButton" value="UnderLine" onclick="document.execCommand('underline');" />
-		<input id='increase' type="button"  style="text-decoration: none;" class="styleButton" value="Larger">
+    <div style="margin-left: 11px; margin-right: auto; margin-bottom:50px;">
+        <input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Bold" onclick="document.execCommand('bold');" />
+        <input type="button" id="buttonAll" style="text-decoration: none;" class="italicstyleButton" value="Italic" onclick="document.execCommand('italic');" />
+        <input type="button" id="buttonAll" style="text-decoration: none;" class="underlinestyleButton" value="UnderLine" onclick="document.execCommand('underline');" />
+        <input id='increase' type="button"  style="text-decoration: none;" class="styleButton" value="Larger">
         <input id='decrease' type="button"  style="text-decoration: none;" class="styleButton" value="Smaller">
-		<input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Save" onClick="saveReportAsFile()" />
-		<input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Cancel" onClick="goBack()" />
-		<input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Clear" onclick="clearReport()" />
-		<input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Print" onclick="printReport()" />
-	</div>
+        <input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Save" onClick="saveReportAsFile()" />
+        <input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Cancel" onClick="goBack()" />
+        <input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Clear" onclick="clearReport()" />
+        <input type="button" id="buttonAll" style="text-decoration: none;" class="styleButton" value="Print" onclick="printReport()" />
+    </div>
 </center>
 
 <div id="patientReportPrintArea" style="display:none;">
@@ -374,61 +373,61 @@
     </style>
 
     <table>     	
-			<tr>
-				<td colspan="4">
-					<table  style="border-collapse: collapse;  border-radius: 10px; box-shadow: 0 0 0 1px #666; width:1020px; height: 150px;" > 
-						<tr>
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >SL.No <span style="float:right; font-style:normal;">:</span>  </td>            
-							<td colspan="2"> <b> &nbsp; ${patientId}</b>
+        <tr>
+            <td colspan="4">
+                <table  style="border-collapse: collapse;  border-radius: 10px; box-shadow: 0 0 0 1px #666; width:1020px; height: 150px;" > 
+                    <tr>
+                        <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >SL.No <span style="float:right; font-style:normal;">:</span>  </td>            
+                        <td colspan="2"> <b> &nbsp; ${patientId}</b>
 
-								<div style="float:right; font-size:16px;">
-									<span  >Received date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span> 
-									<span  > &nbsp;&nbsp; Delivery date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span>  &nbsp;&nbsp;
-							</td> </div>
-						</tr>
-						<tr> 
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:16%; font-style: italic; " >Patient's Name <span style="float:right; font-style:normal;">:</span>  </td>
-							<td style="width:45%; font-size:16px;" > <b> &nbsp; ${patientName}</b></td>
-							<td style="font-style: italic; font-size:16px; text-align:right; ">
-								<span> Age   : <b> ${age} Year(s)</b></span>
-								<span> &nbsp;&nbsp; Sex  : 
-									<b> 
-										<c:choose> 
-											<c:when test="${gender eq 'M'}">Male</c:when> 
-											<c:otherwise>Female</c:otherwise> 
-										</c:choose> 
-									</b>
-								</span>  &nbsp;&nbsp;			
-							</td>				
-						</tr>
-						<tr>
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >Refd. By <span style="float:right; font-style:normal;">:</span>  </td>
-							<td colspan="5" style="font-size:16px;"> <b>&nbsp; ${refdBy}</b></td>
-						</tr>
-						<tr>
-							<td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >USG of <span style="float:right; font-style:normal;">:</span>  </td>
-							<td colspan="5" style="font-size:18px;"> <b>&nbsp; ${testName}</b></td>
-						</tr>
-					</table>
-					<br>
-				</td>
-			</tr>
-			<tr style="width:100%;">
-				<td colspan="4" style="font-size: 16pt;">
-					<spring:bind path="form.content">
-						<c:choose>
-							<c:when test="${empty status.value}">
-								<strong><div id="textArea" contenteditable="true" ></div></strong>
-							</c:when>
-							<c:otherwise>
-								${status.value}
-							</c:otherwise>
-						</c:choose>
-					</spring:bind>
-					<spring:bind path="form.content">
-						<input type="hidden" id="textContent" name="${status.expression}"/>
-					</spring:bind>
-				</td>
-			</tr>
+                            <div style="float:right; font-size:16px;">
+                                <span  >Received date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span> 
+                                <span  > &nbsp;&nbsp; Delivery date   : <b> <fmt:formatDate value="${deliveryDate}" pattern="dd-MM-yyyy" /> </b></span>  &nbsp;&nbsp;
+                        </td> </div>
+                    </tr>
+                    <tr> 
+                        <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:16%; font-style: italic; " >Patient's Name <span style="float:right; font-style:normal;">:</span>  </td>
+                        <td style="width:45%; font-size:16px;" > <b> &nbsp; ${patientName}</b></td>
+                        <td style="font-style: italic; font-size:16px; text-align:right; ">
+                            <span> Age   : <b> ${age} Year(s)</b></span>
+                            <span> &nbsp;&nbsp; Sex  : 
+                                <b> 
+                                    <c:choose> 
+                                        <c:when test="${gender eq 'M'}">Male</c:when> 
+                                        <c:otherwise>Female</c:otherwise> 
+                                    </c:choose> 
+                                </b>
+                            </span>  &nbsp;&nbsp;			
+                        </td>				
+                    </tr>
+                    <tr>
+                        <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >Refd. By <span style="float:right; font-style:normal;">:</span>  </td>
+                        <td colspan="5" style="font-size:16px;"> <b>&nbsp; ${refdBy}</b></td>
+                    </tr>
+                    <tr>
+                        <td height="25" style="text-align:left; font-size:16px; padding-left:10px; width:18%; font-style: italic; " >USG of <span style="float:right; font-style:normal;">:</span>  </td>
+                        <td colspan="5" style="font-size:18px;"> <b>&nbsp; ${testName}</b></td>
+                    </tr>
+                </table>
+                <br>
+            </td>
+        </tr>
+        <tr style="width:100%;">
+            <td colspan="4" style="font-size: 16pt;">
+                <spring:bind path="form.content">
+                    <c:choose>
+                        <c:when test="${empty status.value}">
+                            <strong><div id="textArea" contenteditable="true" ></div></strong>
+                            </c:when>
+                            <c:otherwise>
+                                ${status.value}
+                            </c:otherwise>
+                        </c:choose>
+                    </spring:bind>
+                    <spring:bind path="form.content">
+                    <input type="hidden" id="textContent" name="${status.expression}"/>
+                </spring:bind>
+            </td>
+        </tr>
     </table>
 </div>	
