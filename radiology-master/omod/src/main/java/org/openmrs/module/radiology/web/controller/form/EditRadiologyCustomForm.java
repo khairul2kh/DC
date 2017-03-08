@@ -72,7 +72,7 @@ public class EditRadiologyCustomForm {
 
     private void saveContentAsTextFile(String content, String testName, HttpServletRequest request) {
 
-        String testCode = getPropertiesTestCode(request, testName);
+      //  String testCode = getPropertiesTestCode(request, testName);
         try {
 
             // File file = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/file/" + patientId+"-"+testName+ ".txt"));
@@ -99,29 +99,29 @@ public class EditRadiologyCustomForm {
 
     }
 
-    private String getPropertiesTestCode(HttpServletRequest request, String testNames) {
-
-        try {
-
-            File file = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/radiologyMapping.properties"));
-            File xmlFile = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/radiologyMapping.xml"));
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            PropertyFilesUtil pf = new PropertyFilesUtil();
-
-            String propertyFileName = "DB.properties";
-            // String xmlFileName = "DB.xml";
-            pf.writePropertyFile(file, xmlFile);
-            // readPropertyFile(propertyFileName, xmlFileName);
-            // readAllKeys(propertyFileName, xmlFileName);
-            // readPropertyFileFromClasspath(propertyFileName);
-            return "";
-        } catch (IOException ex) {
-            Logger.getLogger(EditRadiologyCustomForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+//    private String getPropertiesTestCode(HttpServletRequest request, String testNames) {
+//
+//        try {
+//
+//            File file = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/radiologyMapping.properties"));
+//            File xmlFile = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/radiologyMapping.xml"));
+//            if (!file.exists()) {
+//                file.createNewFile();
+//            }
+//            PropertyFilesUtil pf = new PropertyFilesUtil();
+//
+//            String propertyFileName = "DB.properties";
+//            // String xmlFileName = "DB.xml";
+//            pf.writePropertyFile(file, xmlFile);
+//            // readPropertyFile(propertyFileName, xmlFileName);
+//            // readAllKeys(propertyFileName, xmlFileName);
+//            // readPropertyFileFromClasspath(propertyFileName);
+//            return "";
+//        } catch (IOException ex) {
+//            Logger.getLogger(EditRadiologyCustomForm.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
+//    }
 
     private String getReportContent(String fileName) {
 

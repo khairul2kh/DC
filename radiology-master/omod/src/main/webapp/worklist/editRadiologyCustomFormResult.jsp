@@ -193,11 +193,22 @@
         });
     }
 	
-    function printReport() {
-        $("#patientReportPrintArea").printArea({
-            mode: "popup",
-            popClose: true
-        });
+    // function printReport() {
+        // $("#patientReportPrintArea").printArea({
+            // mode: "popup",
+            // popClose: true
+        // });
+    // }
+	
+	function printReport() {
+		var element = document.getElementById("textArea").outerHTML;
+        var a=jQuery("#textContent").val(element);
+        var printer = window.open('left=50', 'top=50', 'width=200,height=100');
+        printer.document.open("text/html");
+        printer.document.write(document.getElementById('textArea').outerHTML);
+        printer.print();
+        printer.document.close();
+        printer.window.close();
     }
 
     // validate all data before submitting
@@ -223,7 +234,7 @@
         var element = document.getElementById("textArea").outerHTML;
         jQuery("#textContent").val(element);
         submitForm();
-
+		printReport();
     }
 
     function goBack() {
@@ -254,31 +265,6 @@
         fileReader.readAsText(fileToLoad, "UTF-8");
         document.getElementById("textArea").outerHTML;
 
-
-
-
-        //retrieve selected Text from a TextFile by using Ajax.
-
-        // var fileName = document.getElementById("fileToLoad").value;
-
-        // if(fileName===""){
-        // alert("Please select a file ");
-        // return;
-        // }
-
-        // $.ajax({
-        // type : "GET",
-        // url : getContextPath() + "/module/radiology/getReportFromTextFile.htm",
-        // data : ({
-        // fileName : fileName
-        // }),
-        // success : function(data) {
-        // document.getElementById("textArea").outerHTML=data;
-        // },
-        // error : function() {
-        // alert("File not found ");
-        // }
-        // });
     }
 
 
