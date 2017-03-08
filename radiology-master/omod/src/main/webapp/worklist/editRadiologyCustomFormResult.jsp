@@ -215,7 +215,7 @@
         jQuery("#radiologyForm").ajaxSubmit(
                 {
                     success: function(responseText, statusText, xhr) {
-                        alert("Saved successfully");
+                       // alert("Saved successfully");
                         goBack();
                     },
                     error: function() {
