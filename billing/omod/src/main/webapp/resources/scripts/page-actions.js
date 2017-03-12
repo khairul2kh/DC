@@ -119,6 +119,113 @@ var CHECK1 =
         {
             billOrderDetailsPage: function() {
 
+                jQuery("#serviceName").autocomplete('autoCompleteTest.htm', {
+                    delay: 10,
+                    scroll: true,
+                    parse: function(xml) {
+                        var results = [];
+                        $(xml).find('item').each(function() {
+                            var text = $.trim($(this).find('text').text());
+                            var price = $.trim($(this).find('li').text());
+                            var value = $.trim($(this).find('value').text());
+                            results[results.length] = {'data': {text: text, price: price, value: value},
+                                'result': text, 'price': price, 'value': value
+                            };
+                        });
+                        return results;
+
+                    },
+                    formatItem: function(data) {
+                        return data.text;
+                    },
+                    formatResult: function(data) {
+                        return data.text;
+                    }
+
+                }).result(function(event, item) {
+                    BILLING.onChangeServiceTestName('serviceName', item.value, item.text, item.price);
+                });
+
+                //to remove Service method
+                $(".delete-service").click(function() {
+                    var didConfirm = confirm("Are you sure ? You want to delete !");
+                    $("#MyTable #tbodyId").find("input[name='record']").each(function() {
+                        if (didConfirm == true) {
+                            if ($(this).is(':checked')) {
+                                $(this).parents('tr').remove();
+
+                                $('#MyTable #tbodyId tr').each(function(index) {
+                                    $(this).find('span.indexSerialize').html(index + 1);
+
+                                    var tot = 0;
+                                    $('#totalBill').attr('value', function() {
+                                        $('.unitPri').each(function() {
+                                            if ($(this).val() !== '') {
+                                                tot += parseInt($(this).val());
+                                            }
+                                        });
+                                        $('.unitPriTube').each(function() {
+                                            if ($(this).val() !== '') {
+                                                tot += parseInt($(this).val());
+                                            }
+                                        });
+                                        return tot;
+                                    });
+                                    var result = 0;
+                                    $('#BillAmount').attr('value', function() {
+                                        $('.unitPri').each(function() {
+                                            if ($(this).val() !== '') {
+                                                result += parseInt($(this).val());
+                                            }
+                                        });
+                                        $('.unitPriTube').each(function() {
+                                            if ($(this).val() !== '') {
+                                                result += parseInt($(this).val());
+                                            }
+                                        });
+                                        return result;
+                                    });
+                                    var net = 0;
+                                    $('#netamount').attr('value', function() {
+                                        $('.unitPri').each(function() {
+                                            if ($(this).val() !== '') {
+                                                net += parseInt($(this).val());
+                                            }
+                                        });
+                                        $('.unitPriTube').each(function() {
+                                            if ($(this).val() !== '') {
+                                                net += parseInt($(this).val());
+                                            }
+                                        });
+                                        return net;
+                                    });
+
+                                    varTuebe = 0;
+                                    $('#totalTube').attr('value', function() {
+                                        $('.unitPriTube').each(function() {
+                                            if ($(this).val() !== '') {
+                                                varTuebe += parseInt($(this).val());
+                                            }
+                                        });
+                                        return varTuebe;
+                                    });
+                                    $('#discountamount').val("0");
+                                    $('#discount').val("0");
+                                    $('#paidamount').val("");
+                                    $('#dueamount').val("");
+
+                                });
+                            }
+
+                            return true;
+                        } else {
+                            $('input[name=record]').attr('checked', false);
+                            return false;
+
+                        }
+                    });
+                });
+
                 jQuery("#dTime").autocomplete('autoCompleteTime.htm', {
                     delay: 100,
                     scroll: true,

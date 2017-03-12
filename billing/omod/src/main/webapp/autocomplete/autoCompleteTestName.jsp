@@ -4,18 +4,19 @@
     Author     : khairul
 --%>
 
- <%@ include file="/WEB-INF/template/include.jsp" %>
+<%@ include file="/WEB-INF/template/include.jsp" %>
 <?xml version="1.0"?>
 <items>
-<c:choose>
-<c:when test="${not empty billableServiceList}">
-<c:forEach items="${billableServiceList}" var="bill" varStatus="loop">
-  <item>
-    <text>${bill.name}, ${bill.price}</text>
-    <value>${bill.conceptId}</value>
-  </item>
-</c:forEach>  
-</c:when>
-</c:choose>
+    <c:choose>
+        <c:when test="${not empty billableServiceList}">
+            <c:forEach items="${billableServiceList}" var="bill" varStatus="loop">
+                <item>
+                    <text>${bill.name}</text>
+                    <li>${bill.price}</li>
+                    <value>${bill.conceptId}</value>
+                </item>
+            </c:forEach>  
+        </c:when>
+    </c:choose>
 
 </items>

@@ -26,21 +26,26 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
         return true;
     }
 
-    function printDiv2() {
+    function printDivSubmit() {
         var netamount = $('#netamount').val();
         var paidamount = $('#total').val();
         var cash = $('#paidamount').val();
         var due = $('#dueamount').val();
         var disAmount = $('#discountamount').val();
+        var docPercentage = $('#docGivPer').val();
+
+
         if (jQuery("#free").is(':checked')) {
             if (jQuery("#freeReason").val().length <= 0) {
                 alert('Please enter Free reason');
+                $("#freeReason").focus();
                 return false;
             }
             else {
                 if (confirm("Are you Sure ?")) {
                     $('#paidamount').val("0");
                     $('#dueamount').val("0");
+                    $('#docGivPer').val("0.0");
                     jQuery("#orderBillingForm")
                             .mask("<img src='" + openmrsContextPath + "/moduleResources/billing/spinner.gif" + "'/>&nbsp;");
                     jQuery("#orderBillingForm").submit();
@@ -60,8 +65,13 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
                 jQuery("#orderBillingForm")
                         .mask("<img src='" + openmrsContextPath + "/moduleResources/billing/spinner.gif" + "'/>&nbsp;");
                 if (confirm("Are you Sure ?")) {
-
-                    jQuery("#orderBillingForm").submit();
+                    if (docPercentage == "") {
+                        $('#docGivPer').val("0.00");
+                        jQuery("#orderBillingForm").submit();
+                    }
+                    else {
+                        jQuery("#orderBillingForm").submit();
+                    }
                 }
                 else {
                     $("#paidamount").focus();
@@ -114,8 +124,8 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
             if (event.keyCode == 13) {
                 printDiv2();
                 // jQuery("#orderBillingForm")
-                 //       .mask("<img src='" + openmrsContextPath + "/moduleResources/billing/spinner.gif" + "'/>&nbsp;");
-                
+                //       .mask("<img src='" + openmrsContextPath + "/moduleResources/billing/spinner.gif" + "'/>&nbsp;");
+
             }
         });
 
@@ -151,10 +161,10 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
 
         var billAmount = $('#BillAmount').val();
         jQuery('#netamount').val(billAmount);
-        var sos =${serviceOrderSize};
-        if (sos == 0) {
-            jQuery("#savebill").hide();
-        }
+//        var sos =${serviceOrderSize};
+//        if (sos == 0) {
+//            jQuery("#savebill").hide();
+//        }
 
         varTuebe = 0;
         $('#totalTube').attr('value', function() {
@@ -356,9 +366,9 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
     }
 </script>
 
-<input type="hidden" id="pageId" value="billOrderDetailsPage" />
-<form id="orderBillingForm" action="orderStoreSave.form"  class="kha-new" method="POST"  onsubmit="javascript:return validate(${serviceOrderSize});">
-    <h1 style="font-size:15px;">  Bill Order Details</h1>
+<input type="hidden" id="pageId" value="billOrderDetailsPage" /><!--For Service AutoComplete-->
+<form id="orderBillingForm" action="orderStoreSave.form"  class="kha-new" method="POST"  onsubmit="javascript:return validate($("#MyTable").find("tr").length;");">
+    <h1>Bill Order Details</h1>
     <input type="hidden" id="patientId" name="patientId" value="<%= request.getParameter("patientId")%>" />
     <input type="hidden" id="orderId" name="orderId" value="<%= request.getParameter("orderId")%>" /> 
     <input type="hidden" id="refDocId" name="refDocId" value="<%= request.getParameter("refDocId")%>" />
@@ -367,6 +377,8 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
     <input type="hidden" id="indCount" name="indCount" value="${serviceOrderSize}" />
     <input type="hidden" id="totalTube" name="totalTube" />
     <input type="hidden" id="twa" name="twa" />
+    <input type="hidden" id="totalServices" name="serviceList"/> <!-- selected total service  -->
+    <input type="hidden" id="totalUnit" name="totalUnit"/> <!-- selected service unit -->
 
     <table style="width:80%; margin:10px 0pt 15px 150px;">
         <tr> 
@@ -393,92 +405,46 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
             <td>Order Id: <span style="font-weight:bold; font-size:20px; color:red;"> ${orderId} </span> </td>
         </tr>  
     </table>
-    
-    <table id="myTable" class="kha"   width="100%">
+    <br>
+    <input style="width:500px; height:40px; padding:0px 0px 0px 6px; border-radius:4px 3px;margin:0px 0px 0px 150px;;font-size:16px;" 
+           type="text" id="serviceName" name="serviceName" placeholder="Please type Id / Service Name" ondblclick="this.value = '';" />
+
+    <table id="MyTable" class="kha"   width="70%">
         <thead>
+
             <tr>
                 <th style="text-align: center;">S.No</th>
                 <th style="text-align: center;">Service Name</th>
-                <th style="text-align: center;">Unit</th> 
+                <th style="text-align: center;">Unit</th>
                 <th style="text-align: center;">Rate</th>
+                <th style="text-align: center;">Action</th>
             </tr>
         </thead>
-        <tbody>
-            <c:forEach var="sol" items="${serviceOrderList}" varStatus="index">
-                <c:choose>
-                    <c:when test="${index.count mod 2 == 0}">
-                        <c:set var="klass" value="odd" />
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="klass" value="even" />
-                    </c:otherwise> 
-                </c:choose>
-                <c:if test="${sol.category.id ne '6615' && sol.category.id ne '5678' }" >
-                    <tr class="${klass}" id="">
-                        <td align="center">${index.count}</td>
-                        <td align="left" width="65%"><input type="text" style="width:100%; border:none; font-size:13px;"
-                                                id="${index.count}service" name="${index.count}service"
-                                                value="${sol.name}" readOnly="true"></td>
-                        <td><input type="text" style="width:70px; text-align: center; font-size:13px;  border: 1px solid #ccc;"
-                                   id="${index.count}servicequantity"
-                                   name="${index.count}servicequantity" size="7" onkeypress="return isNumberKey(event)"
-                                   onkeyup="updatePrice(${index.count});" value="1" class="serquncalc" /></td>
+        <tbody id="tbodyId">
 
-                        <!--Service Price -->
-                        <td align="right"> <input type="text" style="width:110px; font-size:13px; text-align: center;  border: 1px solid #ccc;"
-                                                  id="${index.count}unitprice" name="${index.count}unitprice"
-                                                  size="7" value="${sol.price}" class="unitPri" readOnly="true"></td>
 
-                        <td align="right" style="display:none;"> <input type="text" style="width:110px; font-size:13px; text-align: center;  border: 1px solid #ccc;"
-                                                                        id="${index.count}serviceprice" name="${index.count}serviceprice"
-                                                                        size="7" value="${sol.price}" readOnly="true" class="serpricalc">
-                        </td>  
-                    </tr>
-                </c:if>
-
-                <c:if test="${sol.category.id eq '6615' || sol.category.id eq '5678'  }" >
-
-                    <tr class="${klass}" id="">
-                        <td align="center">${index.count}  </td>
-                        <td align="left"><input type="text" style="width:780px; border:none; font-size:13px;"
-                                                id="${index.count}service" name="${index.count}service"
-                                                value="${sol.name}" readOnly="true"></td>
-                        <td><input type="text" style="width:70px; text-align: center; font-size:13px;  border: 1px solid #ccc;"
-                                   id="${index.count}servicequantity"
-                                   name="${index.count}servicequantity" size="7" onkeypress="return isNumberKey(event)"
-                                   onkeyup="updatePrice(${index.count});" value="1" class="serquncalc" /></td>
-
-                        <!--Service Price -->
-                        <td align="right"><input type="text" style="width:110px; font-size:13px; text-align: center;  border: 1px solid #ccc;"
-                                                 id="${index.count}unitprice" name="${index.count}unitprice"
-                                                 size="7" value="${sol.price}" class="unitPriTube" readOnly="true"></td>
-
-                        <td align="right" style="display:none;"><input type="text" style="width:110px; font-size:13px; text-align: center;  border: 1px solid #ccc;"
-                                                                       id="${index.count}serviceprice" name="${index.count}serviceprice"
-                                                                       size="7" value="${sol.price}" readOnly="true" class="serpricalc">
-                        </td>  
-                    </tr>
-
-                </c:if>
-            </c:forEach>
-            <tr > 
-                <td colspan="3" style="border-right: solid 4px #ccc; background:#BCE7F5;">
-                    <textarea placeholder="Please Write If you want Remarks" style="width:70%; text-align:left;" rows="1" title="Remarks" name="rem" id="rem" ></textarea> 				
-                    <span style="font-size:16px; font-weight:bold; float:right; "> Total Bill</span> 
-                </td>
-                <td align="right"><input type="text" id="totalBill" name="totalBill"  readOnly="true" onclick="alert('This Field Read Only!!!!');"
-                           style="width:100px; text-align:center;  color:blue;  font-size:18px; font-weight:bold; "/>
-                    <span style="font-size:20px; font-weight:bold;">&#2547; </span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4"> <input type="checkbox" id="paid" name="paid" value="1" text="Paid"/> Paid &emsp;&emsp;&emsp;
-                    <input type="checkbox" id="free" name="free" value="0" text="Free"/> Free &emsp;
-                    <input type="text" style="height:30px; width:50%; font-size:15px;" placeholder="Free Reason" id="freeReason" name="freeReason" />
-                </td>
-            </tr>
         </tbody>
+
     </table>
+
+    <table class="kha"   width="70%">
+        <tr> 
+            <td colspan="3" style="border-right: solid 4px #ccc;">
+                <textarea placeholder="Please Write If you want Remarks" style="width:860px; text-align:left;" rows="1" title="Remarks" name="rem" id="rem" ></textarea>
+                <span style="font-size:20px; font-weight:bold; float:right;">Total Bill</span> </td>
+            <td><input type="text" id="totalBill" name="totalBill"  readOnly="true" onclick="alert('This Field Read Only!!!!');"
+                       style="width:100px; text-align:center;  color:blue;  font-size:18px; font-weight:bold; "/>
+                <span style="font-size:20px; font-weight:bold;">TK</span></td>
+        </tr>
+        <tr>
+            <td colspan="4"> <input type="checkbox" id="paid" name="paid" value="1" text="Paid"/> Paid &emsp;&emsp;&emsp;
+                <input type="checkbox" id="free" name="free" value="0" text="Free"/> Free &emsp;
+                <input type="text" style="height:30px; width:50%; font-size:15px;" placeholder="Free Reason" id="freeReason" name="freeReason" />
+            </td>
+        </tr>
+
+    </table>
+    <button type="button" class="delete-service bu" style="margin-left: 74%;">Remove</button>
     <br></br>
     <div>
         <div align="left" class="rcorners2" >
@@ -532,12 +498,12 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
                            style="width:30%; font-size:14px; text-align:center;" /> </td>
             </tr> 
         </table>
-         
+
         <br>
         <div align="center">
             <!-- <input type="submit" class="bu" id="savebill" name="savebill" value="Save bill" /> &nbsp;&nbsp;&nbsp; -->
             <!-- <input type="button" class="bu" onclick="javascript:window.location.href = 'billingqueue.form?'"  value="Cancel" /> -->
-            <input type="button" class="bu" value="Save"  onClick="printDiv2();" /> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" class="bu" value="Save"  onclick="BILLING.ServiceList();"/> &nbsp;&nbsp;&nbsp;&nbsp;
             <input type="button" class="bu" value="Add / Edit Service"  onClick="orderDetails('${patient.id}', '${orderId}', '${encounterId}');" /> 
         </div>
 

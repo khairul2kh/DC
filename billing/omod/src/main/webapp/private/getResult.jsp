@@ -27,7 +27,7 @@
         visit: function(patientId, refDocId, refMarId, orderId, date, refRmpId) {
             var dat = date.toString();
             //ghanshyam 25-02-2013 New Requirement #966[Billing]Add Paid Bill/Add Free Bill for Bangladesh module	
-            window.location.href = openmrsContextPath + "/module/billing/billorder.form?patientId=" + patientId + "&refDocId=" + refDocId
+            window.location.href = openmrsContextPath + "/module/billing/orderStore.form?patientId=" + patientId + "&refDocId=" + refDocId
                     + "&refMarId=" + refMarId + "&orderId=" + orderId + "&date=" + dat + "&refRmpId=" + refRmpId;
         }
     };

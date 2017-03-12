@@ -25,10 +25,12 @@ import org.krysalis.barcode4j.HumanReadablePlacement;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.krysalis.barcode4j.tools.UnitConv;
+import org.openmrs.Concept;
 import org.openmrs.ConceptAnswer;
 import org.openmrs.Patient;
 import org.openmrs.PersonAttribute;
 import org.openmrs.User;
+import org.openmrs.api.ConceptService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.hospitalcore.MedisunService;
 import org.openmrs.module.hospitalcore.model.BillableService;
@@ -89,11 +91,10 @@ public class BillingService {
             model.addAttribute("phone", phone.getValue());
         }
 
-        List<BillableService> serviceOrderList = ms.listOfServiceOrder(patientId, (NumberUtils.createInteger(encounterId)));
-        model.addAttribute("serviceOrderList", serviceOrderList);
-        model.addAttribute("serviceOrderSize", serviceOrderList.size());
-        model.addAttribute("encounterId", encounterId);
-
+//        List<BillableService> serviceOrderList = ms.listOfServiceOrder(patientId, (NumberUtils.createInteger(encounterId)));
+//        model.addAttribute("serviceOrderList", serviceOrderList);
+//        model.addAttribute("serviceOrderSize", serviceOrderList.size());
+//        model.addAttribute("encounterId", encounterId);
         //return "redirect:/module/billing/patientServiceBillForBD.list?patientId=" + patientId;
         return "module/billing/private/serviceBill";
     }
@@ -110,9 +111,27 @@ public class BillingService {
             @RequestParam(value = "discount", required = false) String discount,
             @RequestParam("indCount") Integer indCount,
             @RequestParam(value = "encounterId", required = false) String encounterId,
+            @RequestParam(value = "serviceList", required = false) String serviceList,
+            @RequestParam(value = "totalUnit", required = false) String totalUnit,
             HttpServletRequest request, Model model) throws ParseException, Exception {
 
         Patient patient = Context.getPatientService().getPatient(patientId);
+
+        String[] serviceList_String = serviceList.split(",");
+        String[] serviceUnitList_String = totalUnit.split(",");
+        int[] allserviceList = new int[serviceList_String.length];//SERVICE ALL
+        int[] allservicUniteList = new int[serviceUnitList_String.length];//UNIT ALL
+        for (int i = 0; i < serviceList_String.length; i++) {
+            String serviceListAsString = serviceList_String[i];
+            allserviceList[i] = Integer.parseInt(serviceListAsString);
+            String serviceUnitListAsString = serviceUnitList_String[i];
+            allservicUniteList[i] = Integer.parseInt(serviceUnitListAsString);
+        }
+        System.out.println("Number of Unit Is Given: " + allserviceList.length);
+        System.out.println("The unit  are:");
+        for (int number : allservicUniteList) {
+            System.out.println(number);
+        }
 
         MedisunService ms = Context.getService(MedisunService.class);
         org.openmrs.module.hospitalcore.BillingService billingService = Context.getService(org.openmrs.module.hospitalcore.BillingService.class);
@@ -149,10 +168,8 @@ public class BillingService {
         BigDecimal totalBill = NumberUtils.createBigDecimal(request.getParameter("totalBill"));
         BigDecimal netAmount = NumberUtils.createBigDecimal(request.getParameter("netamount"));
         BigDecimal paidAmount = NumberUtils.createBigDecimal(request.getParameter("paidamount"));
-        BigDecimal payableAmount = NumberUtils.createBigDecimal(request.getParameter("payableamount"));
         BigDecimal dueAmount = NumberUtils.createBigDecimal(request.getParameter("dueamount"));
         BigDecimal discountAmount = NumberUtils.createBigDecimal(request.getParameter("discountamount"));
-        BigDecimal unitPrice = NumberUtils.createBigDecimal(request.getParameter("unitprice"));
         // BigDecimal discount = NumberUtils.createBigDecimal(request.getParameter("discount"));
 
         String due = null;
@@ -217,7 +234,7 @@ public class BillingService {
         dBillColl.setDiscountAmount(discountAmount);
         dBillColl.setDuePaidStatus(status);
         dBillColl.setDuePaid(0);
-                
+
         //if (paidAmount.signum() > 0) {
         ms.saveDiaPatientServiceBillCollect(dBillColl);
         //  }
@@ -225,67 +242,76 @@ public class BillingService {
         String sername = null;
         BigDecimal totCom = BigDecimal.ZERO;
         BigDecimal servicePrice = BigDecimal.ZERO;
+        BigDecimal unPrice = BigDecimal.ZERO;
 
         //totCom = totCom.add(less);
-        for (Integer i = 1; i <= indCount; i++) {
+        for (Integer i = 0; i < allserviceList.length; i++) {
 
-            String servicename = request.getParameter("service");
-            unitPrice = NumberUtils.createBigDecimal(request.getParameter(i.toString() + "unitprice")); // Quantity * unitPrice
-            BigDecimal serviceprice = NumberUtils.createBigDecimal(request.getParameter(i.toString() + "serviceprice")); // Unit Price
+            System.out.println("all unit are here " + allservicUniteList[i]);
+            
+            ConceptService c = Context.getService(ConceptService.class);
+            Concept cc = c.getConcept(allserviceList[i]);
+            
+            System.out.println("Concept name :" + cc.getName());
 
-            Integer qty = NumberUtils.createInteger(request.getParameter(i.toString() + "servicequantity")); // Quantity
-            servicename = request.getParameter(i.toString() + "service");
+            //unitPrice = NumberUtils.createBigDecimal(request.getParameter(i.toString() + "unitprice")); // Quantity * unitPrice
+            //BigDecimal serviceprice = NumberUtils.createBigDecimal(request.getParameter(i.toString() + "serviceprice")); // Unit Price
+            //Integer qty = NumberUtils.createInteger(request.getParameter(i.toString() + "servicequantity")); // Quantity
+            // servicename = request.getParameter(i.toString() + "service");
+            //service = billingService.getServiceByConceptName(servicename);
+            /// New Code
+            String servicename = cc.getName().getName();
             service = billingService.getServiceByConceptName(servicename);
 
-            //  if ((!StringUtils.equalsIgnoreCase(service.getCommission(), "0"))) {
+            unPrice = NumberUtils.createBigDecimal(service.getPrice().toString());
+            BigDecimal serPri = NumberUtils.createBigDecimal(service.getPrice().toString());
+
             if (((!StringUtils.equalsIgnoreCase(service.getCategory().getId().toString(), "5678")))
                     && ((!StringUtils.equalsIgnoreCase(service.getCategory().getId().toString(), "6615")))) {
                 sername = servicename + "," + sername;  // for commison
+                
             }
 
             DiaPatientServiceBillItem dBillItem = new DiaPatientServiceBillItem();
             dBillItem.setService(service);
             dBillItem.setDiaPatientServiceBill(dpsb);
-            dBillItem.setUnitPrice(serviceprice);
-            dBillItem.setAmount(unitPrice);
-            dBillItem.setQuantity(qty);
+            dBillItem.setUnitPrice(serPri);
+            dBillItem.setAmount(unPrice);
+            dBillItem.setQuantity(1);
             dBillItem.setName(servicename);
             dBillItem.setCreatedDate(new Date());
             dBillItem.setCreator(user.getId());
             dBillItem.setVoided(Boolean.FALSE);
-            dBillItem.setActualAmount(unitPrice);
+            dBillItem.setActualAmount(unPrice);
             //  if (paidAmount.signum() > 0) {
             ms.saveDiaPatientServiceBillItem(dBillItem);
             //   }
 
-            BigDecimal ind = NumberUtils.createBigDecimal(indCount.toString());
-            BigDecimal da = discountAmount.divide(ind, 2, RoundingMode.CEILING);
-
             BigDecimal oneHundred = new BigDecimal(100);
-
             BigDecimal le = null;
-            //if (!StringUtils.equalsIgnoreCase(service.getCommission(), "0")) {
+
             if (((!StringUtils.equalsIgnoreCase(service.getCategory().getId().toString(), "5678")))
                     && ((!StringUtils.equalsIgnoreCase(service.getCategory().getId().toString(), "6615")))) {
                 if (!StringUtils.isBlank(discount)) {
                     BigDecimal dis;
                     dis = new BigDecimal(discount);
-                    BigDecimal less = (unitPrice.multiply(dis)).divide(oneHundred, 0, RoundingMode.HALF_EVEN);
+                    BigDecimal less = (unPrice.multiply(dis)).divide(oneHundred, 0, RoundingMode.HALF_EVEN);
                     le = less;
                 } else {
                     le = new BigDecimal(0);
                 }
             }
 
-            //  if ((!StringUtils.equalsIgnoreCase(service.getCommission(), "0"))) {
+            System.out.println("service name :"+ service);
+            
             if (((!StringUtils.equalsIgnoreCase(service.getCategory().getId().toString(), "5678")))
                     && ((!StringUtils.equalsIgnoreCase(service.getCategory().getId().toString(), "6615")))) {
 
                 BigDecimal percentage = NumberUtils.createBigDecimal(service.getCommission());
-                BigDecimal com = (unitPrice.multiply(percentage)).divide(oneHundred);
+                BigDecimal com = (unPrice.multiply(percentage)).divide(oneHundred);
                 totCom = totCom.add(com);
 
-                servicePrice = servicePrice.add(unitPrice);
+                servicePrice = servicePrice.add(unPrice);
             }
 
             // bg3=bg1.add(bg2);
@@ -299,7 +325,7 @@ public class BillingService {
                     diaComCal.setPatient(patient);
                     diaComCal.setServiceName(service.getName());
                     diaComCal.setServiceId(service.getServiceId());
-                    diaComCal.setServicePrice(serviceprice);
+                    diaComCal.setServicePrice(serPri);
                     diaComCal.setLessAmount(le);
                     diaComCal.setCommission(service.getCommission());
                     diaComCal.setCreatedDate(new Date());
@@ -318,72 +344,22 @@ public class BillingService {
             ms.saveDiaLabSam(dls);
         }  /// end of looping
 
-        //   if (dpsb.getBillingStatus() == "PAID") {
-//        if( (!StringUtils.equalsIgnoreCase(service.getCommission(),"0"))  ) {
-//                sername = sername.replace(",null", ""); }
-        if(sername!=null){
-        sername = sername.replace(",null", "");
+        if (sername != null) {
+            sername = sername.replace(",null", "");
 
-        DiaCommissionCalAll diaAll = new DiaCommissionCalAll();
-        diaAll.setDiaPatientServiceBill(dpsb);
-        diaAll.setPatient(patient);
-        diaAll.setServiceName(sername);
-        diaAll.setServicePrice(servicePrice);
-        diaAll.setLessAmount(discountAmount);
-        diaAll.setComAmount(totCom);
-        diaAll.setCreatedDate(new Date());
-        diaAll.setCreator(Context.getAuthenticatedUser().getId());
-        diaAll.setRefId(refDocId);
-        diaAll.setRefRmp(refRmpId);
-        diaAll.setRefMar(refMarId);
-        ms.saveDiaComAll(diaAll);
-        }
-
-        //// Generate Patient Id Barcode4j
-        Code128Bean cod = new Code128Bean();
-        final int reso = 128;
-        cod.setModuleWidth(UnitConv.in2mm(1.0f / reso)); //makes the narrow bar 
-        cod.setHeight(9);
-        cod.setFontSize(3);
-        cod.setFontName("Times New Roman");
-        cod.getBarWidth(2);
-        cod.setMsgPosition(HumanReadablePlacement.HRP_BOTTOM);
-
-        // File outputFilePatId = new File("D:\\tomcat6\\webapps\\CAP\\barcode/" + patient.getId() + ".png"); // CNP
-        // File outputFilePatId = new File("F:\\tomcat6(OpenMRS)\\webapps\\CURE_AND_PREVENTS_V2_Final\\barcode/" + patient.getId() + ".png");  //local
-        File outputFilePatId = new File(request.getSession().getServletContext().getRealPath("/barcode/" + patient.getId() + ".png"));
-
-        OutputStream out1 = new FileOutputStream(outputFilePatId);
-        try {
-            BitmapCanvasProvider canvas = new BitmapCanvasProvider(out1, "image/x-png", reso, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-            cod.generateBarcode(canvas, patient.getPatientIdentifier().getIdentifier());
-            canvas.finish();
-        } finally {
-            out1.close();
-        }
-
-        //// Generate Bill Id Barcode4j
-        Code128Bean codBil = new Code128Bean();
-        final int resou = 128;
-        codBil.setModuleWidth(UnitConv.in2mm(1.0f / resou)); //makes the narrow bar 
-        //width exactly one pixel
-        codBil.setHeight(10);
-        codBil.setFontSize(2);
-        codBil.setFontName("Helvetica");
-        codBil.getBarWidth(2);
-        codBil.setMsgPosition(HumanReadablePlacement.HRP_BOTTOM);
-
-        //  File outputFileBillId = new File("F:\\tomcat6(OpenMRS)\\webapps\\CURE_AND_PREVENTS_V2_Final\\barcode/" + dpsb.getBillId() + ".png"); // Local
-        //  File file = new File(request.getSession().getServletContext().getRealPath("/WEB-INF/view/module/radiology/file/" + testName + ".txt"));
-        File outputFileBillId = new File(request.getSession().getServletContext().getRealPath("/barcode/" + dpsb.getBillId() + ".png"));
-
-        OutputStream outB = new FileOutputStream(outputFileBillId);
-        try {
-            BitmapCanvasProvider canvas = new BitmapCanvasProvider(outB, "image/x-png", reso, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-            codBil.generateBarcode(canvas, dpsb.getBillId().toString());
-            canvas.finish();
-        } finally {
-            outB.close();
+            DiaCommissionCalAll diaAll = new DiaCommissionCalAll();
+            diaAll.setDiaPatientServiceBill(dpsb);
+            diaAll.setPatient(patient);
+            diaAll.setServiceName(sername);
+            diaAll.setServicePrice(servicePrice);
+            diaAll.setLessAmount(discountAmount);
+            diaAll.setComAmount(totCom);
+            diaAll.setCreatedDate(new Date());
+            diaAll.setCreator(Context.getAuthenticatedUser().getId());
+            diaAll.setRefId(refDocId);
+            diaAll.setRefRmp(refRmpId);
+            diaAll.setRefMar(refMarId);
+            ms.saveDiaComAll(diaAll);
         }
 
         model.addAttribute("discountAount", dBillColl.getDiscountAmount());
