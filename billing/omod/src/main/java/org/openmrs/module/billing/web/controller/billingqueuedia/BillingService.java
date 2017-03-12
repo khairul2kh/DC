@@ -277,7 +277,7 @@ public class BillingService {
             dBillItem.setDiaPatientServiceBill(dpsb);
             dBillItem.setUnitPrice(serPri);
             dBillItem.setAmount(unPrice);
-            dBillItem.setQuantity(1);
+            dBillItem.setQuantity(allservicUniteList[i]);
             dBillItem.setName(servicename);
             dBillItem.setCreatedDate(new Date());
             dBillItem.setCreator(user.getId());

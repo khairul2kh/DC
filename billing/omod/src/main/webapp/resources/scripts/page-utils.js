@@ -94,13 +94,13 @@ BILLING = {
             exists = false;
             jQuery("#serviceName").val("");
             var markup = "<tr>\n\
-                              <td><span class='indexSerialize'>" + i + "</span>.</td>\n\
+                              <td><span style='font-size:14px;' class='indexSerialize'>" + i + "</span>.</td>\n\
                               <td><input type='text' style='width:780px; border:none; font-size:14px;' id='" + serviceID + "service' name='" + serviceID + "service' value='" + name + "' readOnly='true'></td>\n\
                               <td><input type='text' style='width:70px; text-align: center; font-size:14px;  border: 1px solid #ccc;' id='" + serviceID + "servicequantity' name='" + serviceID + "servicequantity' size='7' onkeypress='return isNumberKey(event)' onkeyup='updatePrice(" + serviceID + ");' value='" + 1 + "' class='serquncalc'/></td>\n\
                               <td><input type='text' style='width:110px; font-size:14px; text-align: center;  border: 1px solid #ccc;' id='" + serviceID + "unitprice' name='" + serviceID + "unitprice' size='7' value='" + price + "' class='unitPri' readOnly='true'></td>\n\
                               <td style='display:none;'><input type='text' style='width:110px; font-size:14px; text-align: center;  border: 1px solid #ccc;' id='" + serviceID + "serviceprice' name='" + serviceID + "serviceprice' size='7' value='" + price + "'  readOnly='true' class='serpricalc'></td>\n\
                               <td style='display:none;' class='ServiceSelected'><input type='text'id='" + serviceID + "existService'  value='" + serviceID + "'  readOnly='true'>" + serviceID + "</td>\n\
-			      <td><input type='checkbox' name='record'></td>\n\
+			      <td><input type='checkbox' name='record'> &nbsp;&nbsp; <input style='font-size:14px; color:red' id='rem' type='button' name='removebutton' value='X'/></td>\n\
                             </tr>";
             $("#MyTable #tbodyId").append(markup);
             updatePrice(serviceID);

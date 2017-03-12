@@ -7,10 +7,33 @@
 <%@ include file="/WEB-INF/template/headerMinimal.jsp"%>
 <%@ include file="../includes/js_css.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/billing/barcode/JsBarcode.all.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        JsBarcode("#identifier, #identifier1", "${patientSearch.identifier}", {
+            //format: "pharmacode",
+            lineColor: "black",
+            width: 1,
+            height: 25,
+            displayValue: false
+        });
+
+        JsBarcode("#billIdBarcode, #billIdBarcode1", "${billId}", {
+            //format: "pharmacode",
+            lineColor: "black",
+            width: 1,
+            height: 25,
+            displayValue: false
+        });
+    });
+
+</script>
 <br>
 <form method="POST" action="billprint.htm" id="billPrint">
     <input type="hidden" id="patientId" name="patientId" value="${patient.id}" />
     <input type="hidden" id="billId" name="billId" value="${billId}" />
+
     <div style="width: 1280px; font-size: 0.8em">
         <center > <span style="color:red; font-weight:bold; font-size:16px;"> You Must Click Print Button!!! Otherwise Laboratory Queue not Found!!!   </span> </center>
         <style>
@@ -42,7 +65,8 @@
             <tr>
                 <td><strong>Patient ID :</strong> &nbsp;<span style="font-size:18px; font-weight:bold;">
                         ${patientSearch.identifier} </span>
-                    <img src="${pageContext.request.contextPath}/barcode/${patient.patientId}.png" /> 
+                    <img id="identifier"/> 
+
                 </td>
                 <td><strong>Date :</strong> &nbsp; <fmt:formatDate value="${dpsb.createdDate}" pattern="dd-MM-yyyy HH:mm:ss" />
                     <!-- <input type="text" style="border:none; font-size:13px;" value="${dpsb.createdDate}"  /> --> 
@@ -68,7 +92,7 @@
             <tr> 
                 <td><span style="font-size:14px; font-weight:bold;"> Referred Dr :   ${docInfo.doctorName}, ${docInfo.dergee}   </span> </td>
                 <td>Bill Id: <span style="font-weight:bold; font-size:18px; color:red;"> ${billId} </span> 
-                    <img src="${pageContext.request.contextPath}/barcode/${billId}.png" /> 
+                    <img id="billIdBarcode"/>  
                 </td>
             </tr>
         </table>
@@ -88,13 +112,12 @@
                         <c:set var="klass" value="even" />
                     </c:otherwise>
                 </c:choose>
+                <c:set var="rate" value="${sol.quantity * sol.amount}"/> 
                 <tr class="${klass}" id="">
                     <td align="center">${index.count}</td>
                     <td align="left">${sol.name}</td>
-                    <td align="left">${sol.quantity} </td>
-                    <td align="right"><input type="text" style="width:150px; font-size:14px; text-align: right;  border: 0px solid #ccc; background:none;"
-                                             id="${index.count}unitprice" name="${index.count}unitprice"
-                                             size="7" value="${sol.amount}" class="unitPri" readOnly="true"></td>
+                    <td align="left">${sol.quantity}  </td>
+                    <td align="right">${rate}</td>
                 </tr>
             </c:forEach>
             <tr>
@@ -257,18 +280,16 @@
 
     <!-- Customer Copy -->
     <table class="kha1" style="margin-left: 15px;">
-	
-	 <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
-	  <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
-	   <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
-	
-	
-	    <br>
-	
+
+        <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
+        <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
+        <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
+        <br>
+
         <tr>
-            <td> <img height="40px;" src="${pageContext.request.contextPath}/barcode/${billId}.png" />   </td>
+            <td> <img id="billIdBarcode1"/>   </td>
             <td align="center"> <input type="text" value="Customer Copy" style="border: 2px solid #ccc; border-radius:20px; font-size:14px; text-align:center;" />   </td>
-            <td>  <img height="40" src="${pageContext.request.contextPath}/barcode/${patientSearch.patientId}.png" />   </td>
+            <td>  <img id="identifier1"/>    </td>
         </tr>
         <tr style="padding-bottom: -1em;">
             <td><span style="font-weight:bold; font-size:16px; color:black;"> Bill No. :   ${billId} </span>   </td>
@@ -305,12 +326,11 @@
                 <td  align="right"><span class="span1">Price(Tk.)</span></td>
             </tr>
         <c:forEach var="sol" items="${diaBillItemList}" varStatus="index">
+            <c:set var="rate" value="${sol.quantity * sol.amount}"/>
             <tr style="border-bottom:1pt solid #999; font-size:13px;" >
                 <td align="left"> ${sol.service.shortName}</td>
                 <td align="left" style="color:black;"> ${sol.name} </td>
-                <td align="right"><input type="text" style="width:150px; font-size:14px; text-align: right;  border: none;"
-                                         id="${index.count}unitprice" name="${index.count}unitprice"
-                                         size="7" value="${sol.amount}" class="unitPri" readOnly="true"></td>
+                <td align="right">${rate}</td>
             </tr>
         </c:forEach>
         </tr>
@@ -401,7 +421,6 @@
         <span class="vt">Powered By: Next Generation Technology (NGT).</span>
     </label>
 
-
     <script>
         function printDiv3() {
             var printer = window.open('left=0', 'top=0', 'width=300,height=300');
@@ -429,17 +448,17 @@
     </script>
     <!-- Lab Copy -->
     <p style="page-break-after:always;"></p>
-	
-		 <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
-	  <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
-	   <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
+
+    <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
+    <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
+    <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
     <br>
 
     <table class="kha1" style="margin-left: 15px;">
         <tr>
-            <td> <img height="40px;" src="${pageContext.request.contextPath}/barcode/${billId}.png" />   </td>
+            <td>  <img id="billIdBarcode1"/>    </td>
             <td align="center"> <input type="text" value="Lab Copy" style="border: 2px solid #ccc; border-radius:20px; font-size:14px; text-align:center;" />   </td>
-            <td>  <img height="40" src="${pageContext.request.contextPath}/barcode/${patientSearch.patientId}.png" />   </td>
+            <td>  <img id="identifier1"/>  </td>
         </tr>
         <tr style="padding-bottom: -1em;">
             <td><span style="font-weight:bold; font-size:16px; color:black;"> Bill No. :   ${billId} </span>   </td>
@@ -477,13 +496,11 @@
                 <td  align="right"><span class="span1">Price(Tk.)</span></td>
             </tr>
         <c:forEach var="sol" items="${diaBillItemList}" varStatus="index">
-
+            <c:set var="rate" value="${sol.quantity * sol.amount}"/>
             <tr style="border-bottom:1pt solid #999; font-size:13px;" >
                 <td align="left"> ${sol.service.shortName}</td>
                 <td align="left" style="color:black;"> ${sol.name} </td>
-                <td align="right"><input type="text" style="width:150px; font-size:14px; text-align: right;  border: none;"
-                                         id="${index.count}unitprice" name="${index.count}unitprice"
-                                         size="7" value="${sol.amount}" class="unitPri" readOnly="true"></td>
+                <td align="right">${rate}</td>
             </tr>
         </c:forEach>
         </tr>
@@ -538,16 +555,16 @@
 
     <!-- Office Copy -->
     <p style="page-break-after:always;"></p>
-		 <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
-	  <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
-	   <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
+    <center > <span style="color:black; font-weight:bold; font-size:27px;">Dhaka Cardiac Consultation Research and Diagnostic Center</span> </center>
+    <center > <span style="color:black; font-weight:bold; font-size:20px;">Haji Gofur Market (2nd Floor) Station Road, Tongi, Gazipur.</span> </center>
+    <center > <span style="color:black; font-weight:bold; font-size:25px;">Contact : 01778902483</span> </center>
     <br>
 
     <table class="kha1" style="margin-left: 15px;">
         <tr>
-            <td> <img height="40px;" src="${pageContext.request.contextPath}/barcode/${billId}.png" />   </td>
+            <td> <img id="billIdBarcode1"/>    </td>
             <td align="center"> <input type="text" value="Office Copy" style="border: 2px solid #ccc; border-radius:20px; font-size:14px; text-align:center;" />   </td>
-            <td>  <img height="40" src="${pageContext.request.contextPath}/barcode/${patientSearch.patientId}.png" />   </td>
+            <td>  <img id="identifier1"/>  </td>
         </tr>
         <tr style="padding-bottom: -1em;">
             <td><span style="font-weight:bold; font-size:16px; color:black;"> Bill No. :   ${billId} </span>   </td>
@@ -574,7 +591,6 @@
 
                 <c:if test="${empty rmpInfo}" > ${docInfo.territory} </c:if>   </td> 
             </tr>
-
         </table>
         <!--Service Info -->
 
@@ -585,13 +601,11 @@
                 <td  align="right"><span class="span1">Price(Tk.)</span></td>
             </tr>
         <c:forEach var="sol" items="${diaBillItemList}" varStatus="index">
-
+            <c:set var="rate" value="${sol.quantity * sol.amount}"/>
             <tr style="border-bottom:1pt solid #999; font-size:13px;" >
                 <td align="left"> ${sol.service.shortName}</td>
                 <td align="left" style="color:black;"> ${sol.name} </td>
-                <td align="right"><input type="text" style="width:150px; font-size:14px; text-align: right;  border: none;"
-                                         id="${index.count}unitprice" name="${index.count}unitprice"
-                                         size="7" value="${sol.amount}" class="unitPri" readOnly="true"></td>
+                <td align="right">${rate}</td>
             </tr>
         </c:forEach>
         </tr>
@@ -604,32 +618,26 @@
             </td>
             <td  colspan="1" style="color:black; border-bottom:1pt dashed #999; font-size:14px;"> Sub Total Tk. <span style="float:right;"> ${dpsb.actualAmount} </span>  </td> 
         </tr>
-
         <tr>
             <td colspan="2" style="color:black;">  &nbsp; </td>
             <td  colspan="1" style="color:black; border-bottom:1pt dashed #999; font-size:14px;"> +VAT Tk. <span style="float:right;"> 0.00 </span>  </td> 
         </tr>
-
         <tr rowspan="2">
             <td colspan="2" style="color:black;">  &nbsp; </td>
             <td  colspan="1" style="color:black; border-bottom:1pt dashed #999; font-size:14px;">- Discount Tk. <span style="float:right;"> ${dpsb.discountAmount}</span>  </td> 
         </tr>
-
         <tr>
             <td colspan="2" style="color:black;">  &nbsp; </td>
             <td  colspan="1" style="color:black; border-bottom:1pt dashed #999; font-size:14px;">Net Payable Tk. <span style="float:right;"> ${dpsb.amount}</span>  </td> 
         </tr>
-
         <tr>
             <td colspan="2" style="color:black;">  &nbsp; </td>
             <td  colspan="1" style="color:black; border-bottom:1pt dashed #999; font-size:14px;">Advanced Tk. <span style="float:right;"> ${paid}.00</span>  </td> 
         </tr>
-
         <tr>
             <td colspan="2" style="color:black;">  &nbsp; </td>
             <td  colspan="1" style="color:black; border-bottom:1pt dashed #999; font-size:14px;">Due Tk. <span style="float:right;"> ${dpsb.dueAmount}</span>  </td> 
         </tr>
-
     </table>
     <br>
 

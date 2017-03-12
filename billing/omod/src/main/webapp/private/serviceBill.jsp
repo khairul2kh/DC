@@ -303,6 +303,76 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
         var vis = (box.checked) ? "block" : "none";
         document.getElementById(it).style.display = vis;
     }
+
+    $('#rem').live('click', function() {
+        var didConfirm = confirm("Are you sure ? You want to delete !");
+        if (didConfirm == true) {
+            $(this).parents('tr').remove();
+            $('#MyTable #tbodyId tr').each(function(index) {
+                $(this).find('span.indexSerialize').html(index + 1);
+
+                var tot = 0;
+                $('#totalBill').attr('value', function() {
+                    $('.unitPri').each(function() {
+                        if ($(this).val() !== '') {
+                            tot += parseInt($(this).val());
+                        }
+                    });
+                    $('.unitPriTube').each(function() {
+                        if ($(this).val() !== '') {
+                            tot += parseInt($(this).val());
+                        }
+                    });
+                    return tot;
+                });
+                var result = 0;
+                $('#BillAmount').attr('value', function() {
+                    $('.unitPri').each(function() {
+                        if ($(this).val() !== '') {
+                            result += parseInt($(this).val());
+                        }
+                    });
+                    $('.unitPriTube').each(function() {
+                        if ($(this).val() !== '') {
+                            result += parseInt($(this).val());
+                        }
+                    });
+                    return result;
+                });
+                var net = 0;
+                $('#netamount').attr('value', function() {
+                    $('.unitPri').each(function() {
+                        if ($(this).val() !== '') {
+                            net += parseInt($(this).val());
+                        }
+                    });
+                    $('.unitPriTube').each(function() {
+                        if ($(this).val() !== '') {
+                            net += parseInt($(this).val());
+                        }
+                    });
+                    return net;
+                });
+
+                varTuebe = 0;
+                $('#totalTube').attr('value', function() {
+                    $('.unitPriTube').each(function() {
+                        if ($(this).val() !== '') {
+                            varTuebe += parseInt($(this).val());
+                        }
+                    });
+                    return varTuebe;
+                });
+                $('#discountamount').val("0");
+                $('#discount').val("0");
+                $('#paidamount').val("");
+                $('#dueamount').val("");
+
+            });
+        }
+        ;
+
+    });
 </script>
 
 <script type="text/javascript">
@@ -394,7 +464,6 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
             <td>Gender : <c:if test="${patient.gender eq 'M'}"> <b> Male </b> </c:if> 
                 <c:if test="${patient.gender eq 'F'}"> <b> Female </b> </c:if>
                 </td>
-
             <c:if test="${not empty add.address1}">
                 <td colspan="2">Patient Address : <b> ${add.address1},  ${add.cityVillage}, ${add.countyDistrict} </b> </td>
             </c:if>	
@@ -411,7 +480,6 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
 
     <table id="MyTable" class="kha"   width="70%">
         <thead>
-
             <tr>
                 <th style="text-align: center;">S.No</th>
                 <th style="text-align: center;">Service Name</th>
@@ -422,9 +490,7 @@ src="${pageContext.request.contextPath}/moduleResources/billing/scripts/jquery/j
         </thead>
         <tbody id="tbodyId">
 
-
         </tbody>
-
     </table>
 
     <table class="kha"   width="70%">
