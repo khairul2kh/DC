@@ -204,7 +204,7 @@
         var a = jQuery("#textContent").val(element);
         var printer = window.open('left=50', 'top=50', 'width=200,height=100');
         printer.document.open("text/html");
-        printer.document.write(document.getElementById('textArea').outerHTML);
+        printer.document.write(document.getElementById('center').outerHTML);
         printer.print();
         printer.document.close();
         printer.window.close();
